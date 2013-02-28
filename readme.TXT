@@ -1,6 +1,6 @@
 
+INSTALATION:
 
- INSTALATION 
 
 1. Create required database. Use "utf8_unicode_ci" as default collation.
 
@@ -24,6 +24,7 @@
 	!!! Change your password ASAP !!!
 
 
+
 NOTES:
 
 -to see the list of plugins pre-installed on your 42cms site se "plugins.TXTfile"
@@ -39,12 +40,5 @@ NOTES:
 	into page text by replacing chunk placeholder with its text (e.g. [{weburl}] replace with URL of your web from database
 
 
-
-
-
-
-
-
-Default user
 
 

@@ -1,0 +1,38 @@
+
+
+[(menu)]				- menu plugin - shows unordered list(<ul><li>) of all active pages - usefull for creating menus and page maps
+[(menu?showpart=members)]		- shows only pages which url begins with "members/"
+[(menu?level=1)]			- shows only level 1 pages
+[(menu?showpart=members&level=2)]	- shows only pages which url begins with "members/" which are level 2
+[(menu?levelfrom=2&showpart=members)]	- shows only pages which are level 2 or higher and their url begins with "members/" 
+[(menu?levelfrom=2&levelto=4)]		- shows only pages which are levels 2, 3 and 4
+
+
+[(members/register)]	- shows registration form
+
+
+[(gallery?id=1)]	- shows images of gallery with id 1
+
+
+[(show_galleries?id=1,3,9,5)]	- shows list of galleries 1, 3, 9, and 5 in this order
+
+
+[(members/info)]	- shows content of following php variables: $_SERVER, $config, $pluginVars, $_POST, $_SESSION and $_COOKIE
+			- while debugging some plugin enter this plugin in the same page (via Page editor)
+
+
+...and many more.
+
+
+
+All the .php files in folder plugins (and all subfolders) can be called as plugin e.g. file "includes/plugins/members/logout.php" is called "[(members/logout)]" -without "includes/plugins/" and ".php"
+
+To create plugin, simply place your .php file into folder "includes/plugins". For your plugin might be very usefull these variables: "$config" containing configuration of the script and "$pluginVars" some other plugin specific data
+
+Plugin is entered into page text by replacing its placeholder (e.g. [(menu)]) with content of variable "$return"
+
+
+
+			
+
+

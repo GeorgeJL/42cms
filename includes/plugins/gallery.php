@@ -32,48 +32,27 @@ $(function() {
     
 })
 </script>
-
-<style>
-
-.overimage{position: relative; display: inline-block;  width: 285px; vertical-align: middle; text-align: center; margin: 5px;}
-.overimage img:hover{outline: 7px solid #999}
-</style>
-
 <script src="'.$config->pluginsfolder.'lightbox/js/lightbox.js"></script>
 ';
 while($row=$result->fetch_array())
 {
   $i++;                    //author, addeddate, title, description
-  
   if(!empty($row['description']))
   {
     $description=$row['description'].'<br />';
   }else{
     $description='';
   }
-  
   if(!empty($row['author']))
   {
     $author='<br />'.$lang->author.': '.$row['author'];
   }else{
     $author='';
   }
-  
   @$return.='<span class="overimage"><a href="'.$config->galleryfolder.$row['galleryid'].'/'.$row['file'].'" rel="lightbox[roadtrip]" title="'.$row['title'].'" lightdata-desc="<b>'.$row['title'].'</b><br />'.$description.'Added: '.$row['addeddate'].$author.'<br/>"><img src="'.$config->galleryfolder.'/'.$row['galleryid'].'/th/'.$row['file'].'"></a></span>';
-  //$return.='<a href="'.$config->galleryfolder.$row['file'].'" rel="lightbox[roadtrip]"  title="<b>'.$row['title'].'</b><br />'.$row['description'].'<br />Added: '.$row['addeddate'].'<br />Author: '.$row['author'].'<hr>"><img src="'.$config->galleryfolder.$row['file'].'" height="150px"></a> ';
-  
-  if(($i%2)>0)
-    $return.='<br />';
-  
-  //$return.=$row['file'].'<br>';
 }
 if($i==1)
 {
   $return.='<br /><b>'.$lang->noimages.'</b>';
 }
-
-
-//$return.=$sql;
-
-
 ?>

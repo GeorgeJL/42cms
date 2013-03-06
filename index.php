@@ -360,7 +360,7 @@ $partConfig->recovsendermail=$config->recovsendermail;
 
 $partConfig->pageid=$pageId;
 
-$pluginVars=array('weburl'=>$config->weburl, 'loggedin'=>@$loggedIn, 'membersonly'=>$membersOnly, 'afterpath'=>$partPath, 'salt'=>$class->salt(), 'stringPath'=>$stringPath); //this variables will be passed to plugins and addons 
+$pluginVars=array('weburl'=>$config->weburl, 'loggedin'=>@$loggedIn, 'membersonly'=>$membersOnly, 'afterpath'=>$partPath, 'salt'=>$class->salt(), 'stringPath'=>$stringPath, 'subdomain'=>$subDomain); //this variables will be passed to plugins and addons 
 unset($pluginVars['salt']);
 if (isset($matches[0]))
 {//there are some plugins

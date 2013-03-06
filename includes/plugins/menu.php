@@ -15,12 +15,15 @@ if(!empty($pluginVars['pluginget']['level']))
   $level=$mysqli->real_escape_string($pluginVars['pluginget']['level']);
   $level=" AND level=".$level;
 }
+
+$subDomain=$mysqli->real_escape_string($pluginVars['subdomain']);
+
 if(empty($pluginVars['pluginget']['showpart']))
 {
-  $sql="SELECT url, id, subdomain, url_part, level, menuorder, menutitle, id, inmenu FROM ".$config->dbprefix."pages WHERE active='Yes' AND inmenu!='non' AND level!='0' ".$level." ORDER BY level, menuorder, title";
+  $sql="SELECT url, id, subdomain, url_part, level, menuorder, menutitle, id, inmenu FROM ".$config->dbprefix."pages WHERE subdomain='".$subDomain."' AND active='Yes' AND inmenu!='non' AND level!='0' ".$level." ORDER BY level, menuorder, title";
 }else{
   $showPart=$mysqli->real_escape_string($pluginVars['pluginget']['showpart']);
-  $sql="SELECT url, id, subdomain, url_part, level, menuorder, menutitle, id, inmenu FROM ".$config->dbprefix."pages WHERE active='Yes' AND inmenu!='non' AND level!='0' ".$level." AND url LIKE '".$showPart."%' ORDER BY level, menuorder, title";
+  $sql="SELECT url, id, subdomain, url_part, level, menuorder, menutitle, id, inmenu FROM ".$config->dbprefix."pages WHERE subdomain='".$subDomain."' AND active='Yes' AND inmenu!='non' AND level!='0' ".$level." AND url LIKE '".$showPart."%' ORDER BY level, menuorder, title";
 }  
 $result=$mysqli->query($sql);
 $list=array();
@@ -92,7 +95,15 @@ foreach($menuArray as $key2=>$value2)
   }  
 }
 
-$return.=$this->arrayToList2($menuArray, $config->weburl, $pluginVars['stringPath']);
+if(empty($pluginVars['subdomain']))
+  $weburl=$config->weburl;
+else{
+  $weburl=str_replace('://www.', '://', $config->weburl);
+  $weburl=str_replace('://', '://'.$pluginVars['subdomain'].'.', $weburl);
+  
+    
+}
+$return.=$this->arrayToList2($menuArray, $weburl, $pluginVars['stringPath']);
 
 
 ?>

@@ -32,7 +32,7 @@ if( (isset($pluginVars['afterpath'])AND(preg_match('/^[0-9]{1,5}$/', $pluginVars
   }else{
     $id=$mysqli->real_escape_string($pluginVars['afterpath']);
   }  
-  $sql="SELECT id, url, level, title, inmenu, menutitle, membersonly, h1, text, template, menuorder, active FROM ".$config->dbprefix."pages WHERE id='".$id."'";
+  $sql="SELECT id, subdomain, url, level, title, inmenu, menutitle, membersonly, h1, text, template, menuorder, active FROM ".$config->dbprefix."pages WHERE id='".$id."'";
   $result=$mysqli->query($sql);
   $result=$result->fetch_array();
   preg_match('/([a-zA-Z0-9_\-]+)$/', $result['url'], $urlEnd);
@@ -82,6 +82,12 @@ if( (isset($pluginVars['afterpath'])AND(preg_match('/^[0-9]{1,5}$/', $pluginVars
     $active='<input type="checkbox" id="active" name="active" checked="checked">';
   }else{
     $active='<input type="checkbox" id="active" name="active">';
+  }
+  if(empty($result['subdomain']))
+    $weburl=$config->weburl;
+  else{
+    $weburl=str_replace('://www.', '://', $config->weburl);
+    $weburl=str_replace('://', '://'.$result['subdomain'].'.', $weburl);
   }
   $return.='
   <!-- TinyMCE -->
@@ -141,7 +147,7 @@ if( (isset($pluginVars['afterpath'])AND(preg_match('/^[0-9]{1,5}$/', $pluginVars
 
     <label for="id">'.$lang->pageid.':</label>                <span id="id">'.$result['id'].'</span><br />
     <label for="active">'.$lang->active.':</label>            '.$active.'<br />
-    <label for="url">'.$config->weburl.$urlBeginning.'</label>     <input type="hidden" id="urlbeginning" name="urlbeginning" value="'.$urlBeginning.'">         <input type="text" id="url" name="urlend" value="'.@$urlEnd[0].'"><br />
+    <label for="url">'.$weburl.$urlBeginning.'</label>     <input type="hidden" id="urlbeginning" name="urlbeginning" value="'.$urlBeginning.'">         <input type="text" id="url" name="urlend" value="'.@$urlEnd[0].'"><br />
     <label for="title">'.$lang->pagetitle.':</label>          <input type="text" id="title" name="title" value="'.$result['title'].'"><br />
     <label for="inmenu">'.$lang->inmenu.':</label>            '.$inMenu.'<br />
     <label for="menutitle">'.$lang->menutitle.':</label>      <input type="text" id="menutitle" name="menutitle" value="'.$result['menutitle'].'"><br />

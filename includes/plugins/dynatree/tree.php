@@ -164,7 +164,7 @@ ul.dynatree-container a{padding: 0 5 3 3;}
 .inactive span.dynatree-icon /* Default icon */{margin-left: 3px;background-position: -80px 0px;}
 .inactive.dynatree-ico-cf span.dynatree-icon{margin-left: 3px;background-position: -15px -15px;}
 .inactive.dynatree-ico-ef span.dynatree-icon{margin-left: 3px;background-position: -80px -15px;}
-ul.dynatree-container span.td{position: absolute; display: inline; border-size: 1px; overflow: hidden;}
+ul.dynatree-container span.td{position: relative; display: inline; border-size: 1px; overflow: hidden;padding: 0px 5px;}
 ul.dynatree-container span.td:nth-child(1){position: static;}
 ul.dynatree-container span.td:nth-child(2){position: relative; color: #aaa; padding: 0px 5px; width: 30px;}
 ul.dynatree-container span.td:nth-child(3){position: relative; color: #0a0; padding: 0px 5px; width: 30px;}

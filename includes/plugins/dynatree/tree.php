@@ -1,5 +1,11 @@
 <?php
-$sql="SELECT id, subdomain, url, url_part, menuorder, title, level, menutitle, active, membersonly FROM ".$config->dbprefix."pages ORDER BY subdomain, level, menuorder";
+if(!empty($_SESSION['permissions'][0]))
+{
+  $idlist=$mysqli->real_escape_string($_SESSION['permissions'][0]);
+  $sql="SELECT id, subdomain, url, url_part, menuorder, title, level, menutitle, active, membersonly FROM ".$config->dbprefix."pages WHERE id IN (".$idlist.") ORDER BY subdomain, level, menuorder";
+}else{
+  $sql="SELECT id, subdomain, url, url_part, menuorder, title, level, menutitle, active, membersonly FROM ".$config->dbprefix."pages ORDER BY subdomain, level, menuorder";
+}
 $result=$mysqli->query($sql);
 $return='
 <script src="'.$config->jquerysource.'" type="text/javascript"></script>

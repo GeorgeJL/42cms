@@ -15,8 +15,6 @@ if(isset($_POST['submit']))
       $passMeter = new passStrenght();
       if( (preg_match('/^([a-zA-Z0-9\.\-_]{5,16})$/', $_POST['newpass'])) AND ( ($passMeter->numeric($_POST['newpass']))>=$config->passstrenght ) )  
       {  //new password is ok
-        $return.='New pass is ok<br />';
-        
         $salt=$this->salt();
         $newpass=crypt($_POST['newpass'], $config->crypt.$salt);
         $sql="UPDATE ".$config->dbprefix."users SET pass='".$newpass."' WHERE id='".$mysqli->real_escape_string($_SESSION['userid'])."'";

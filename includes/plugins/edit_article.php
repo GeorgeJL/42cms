@@ -132,7 +132,7 @@ if( (isset($pluginVars['afterpath'])AND(preg_match('/^[0-9]{1,5}$/', $pluginVars
   		external_image_list_url : "lists/image_list.js",
   		media_external_list_url : "lists/media_list.js",
       
-      table_styles : "Default table style=default-table",
+      table_styles : "Default table style=default-table",   
   	});
     tinyMCE.execCommand("mceInsertContent",false,\'whatever\');
     </script>

@@ -96,7 +96,6 @@ if ( ($config->registration>=1) )
                     $mysqli->query($sql);
                     $userId=$mysqli->insert_id;
                   }
-                  $return.='<hr />SQL : '.$sql.'<hr />SQL2: '.$sql2.'<hr />SQL3: '.$sql3.'<hr />SQL4: '.$sql4.'<hr />';
                   $hash=crypt(($userId.'@@@'.$salt), $config->crypt.$salt2);
                   $link=$config->membersurl.'activate/?id='.$userId.'&h='.urlencode($hash);
                   $mailBody=str_replace('[[activlink]]', $link, $lang->activmailbody);
@@ -108,6 +107,7 @@ if ( ($config->registration>=1) )
                   if($config->debuggingmode===true)
                     {
                       $return.='<br /><br />Following text is diplayed only if is enabled debugging mode.<hr />e:mail:<br />'.$_POST['email'].'<br />Subject:<br />'.$mailSubject.'<br />mail body:<br />'.$mailBody.'<br />Sender:<br />'.$config->activsendermail.'<hr />';
+                      $return.='<hr />SQL : '.$sql.'<hr />SQL2: '.$sql2.'<hr />SQL3: '.$sql3.'<hr />SQL4: '.$sql4.'<hr />';
                     }
                 }else{
                   $return.=$lang->emailused;

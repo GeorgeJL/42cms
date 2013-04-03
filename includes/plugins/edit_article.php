@@ -472,6 +472,7 @@ $(function() {
     $sqlData['text']=$mysqli->real_escape_string(stripslashes($_POST['text']));
     $sqlData['text']=str_replace('[&lt;', '[<', $sqlData['text']);
     $sqlData['text']=str_replace('&gt;]', '>]', $sqlData['text']);
+    $sqlData['text']=str_replace($config->weburl, '[{weburl}]', $sqlData['text']);
     
     $sqlData['title']=$mysqli->real_escape_string(stripslashes($_POST['title']));
     $sqlData['url']=$mysqli->real_escape_string($_POST['urlbeginning'].$_POST['urlend']);

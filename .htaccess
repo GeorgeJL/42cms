@@ -123,7 +123,7 @@ RewriteCond %{REQUEST_URI} !/data/?
 RewriteCond %{REQUEST_URI} !/documents/?  
 #RewriteCond %{REQUEST_URI} !/includes/templates//?  
 
-
+RewriteCond %{REQUEST_URI} !/includes/plugins/tinymce/?    
 
 
 

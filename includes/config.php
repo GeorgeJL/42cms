@@ -2,17 +2,17 @@
 class Config{
   //urls
   public $webname='42cms'; //This is the name of the web e.g. MyBestWeb.com
-  public $domain='localhost';   //used to check if requested url (current url) contains subdomain  (if whole site is on subdomain set like this:  public $domain='sub.something.com'
-  public $weburl='http://localhost/42cms/version-1-0/';  //insert with '/' at the end
-  public $membersurl='http://localhost/42cms/version-1-0/members/';  //insert with '/' at the end
-  public $registerurl='http://localhost/42cms/version-1-0/register/';  //insert with '/' at the end
-  public $lostpassurl='http://localhost/42cms/version-1-0/members/lostpass/';  //insert with '/' at the end
-  public $editpageurl='http://localhost/42cms/version-1-0/members/edit/';  //insert with '/' at the end
-  public $imagesfolder='http://localhost/42cms/version-1-0/images/';  //insert with '/' at the end
-  public $filesfolder='http://localhost/42cms/version-1-0/files/';  //insert with '/' at the end
-  public $galleryfolder='http://localhost/42cms/version-1-0/gallery/';  //insert with '/' at the end
-  public $datafolder='http://localhost/42cms/version-1-0/data/';  //insert with '/' at the end
-  public $pluginsfolder='http://localhost/42cms/version-1-0/includes/plugins/';  //insert with '/' at the end
+  public $domain='http://www.example.com';   //used to check if requested url (current url) contains subdomain  (if whole site is on subdomain set like this:  public $domain='sub.something.com'
+  public $weburl='http://www.example.com/42cms/develop/';  //insert with '/' at the end
+  public $membersurl='http://www.example.com/42cms/develop/members/';  //insert with '/' at the end
+  public $registerurl='http://www.example.com/42cms/develop/register/';  //insert with '/' at the end
+  public $lostpassurl='http://www.example.com/42cms/develop/members/lostpass/';  //insert with '/' at the end
+  public $editpageurl='http://www.example.com/42cms/develop/members/edit/';  //insert with '/' at the end
+  public $imagesfolder='http://www.example.com/42cms/develop/images/';  //insert with '/' at the end
+  public $filesfolder='http://www.example.com/42cms/develop/files/';  //insert with '/' at the end
+  public $galleryfolder='http://www.example.com/42cms/develop/gallery/';  //insert with '/' at the end
+  public $datafolder='http://www.example.com/42cms/develop/data/';  //insert with '/' at the end
+  public $pluginsfolder='http://www.example.com/42cms/develop/includes/plugins/';  //insert with '/' at the end
   public $jquerysource='http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js';    //or use  http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js for latest version
   public $jqueryuisource='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js';   //or use http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js for latest version
   public $jqueryuithemesource='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/vader/jquery-ui.css'; //check: http://blog.jqueryui.com/2012/11/jquery-ui-1-9-2/    or use http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/vader/jquery-ui.css for latest version
@@ -41,7 +41,7 @@ class Config{
   
   public $sessionsalt='';     //20 characters long from the alphabet "./0-9A-Za-z"
   public $cookiesalt='';           //at least 15 characters long salt (any random characters containing digits, lower and uppercase letters and other specia characters)  
-  public $cookieprefix='lalhost-al01';  //default cookie prefix is the same as domain
+  public $cookieprefix='42cms-develop01';  //default cookie prefix is the same as domain
   public $rememberme=31536000;  //how long shoul stay set cookie for remembering password, default is 1 year (31536000 seconds)
   
   //registred users

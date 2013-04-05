@@ -28,10 +28,10 @@ if(empty($pluginVars['pluginget']['dontshow']))
 
 if(empty($pluginVars['pluginget']['showpart']))
 {
-  $sql="SELECT url, id, subdomain, url_part, level, menuorder, menutitle, id, inmenu FROM ".$config->dbprefix."pages WHERE subdomain='".$subDomain."' AND active='Yes' AND inmenu!='non' AND level!='0' ".$level." ORDER BY level, menuorder, title";
+  $sql="SELECT url, id, subdomain, url_part, level, menuorder, menutitle, id, inmenu FROM ".$config->dbprefix."pages WHERE subdomain='".$subDomain."' AND active='Yes' AND inmenu!='non' ".$level." ORDER BY level, menuorder, title";
 }else{
   $showPart=$mysqli->real_escape_string($pluginVars['pluginget']['showpart']);
-  $sql="SELECT url, id, subdomain, url_part, level, menuorder, menutitle, id, inmenu FROM ".$config->dbprefix."pages WHERE subdomain='".$subDomain."' AND active='Yes' AND inmenu!='non' AND level!='0' ".$level." AND url LIKE '".$showPart."%' ORDER BY level, menuorder, title";
+  $sql="SELECT url, id, subdomain, url_part, level, menuorder, menutitle, id, inmenu FROM ".$config->dbprefix."pages WHERE subdomain='".$subDomain."' AND active='Yes' AND inmenu!='non' ".$level." AND url LIKE '".$showPart."%' ORDER BY level, menuorder, title";
 }  
 $result=$mysqli->query($sql);
 $list=array();

@@ -18,6 +18,14 @@ if(!empty($pluginVars['pluginget']['level']))
 
 $subDomain=$mysqli->real_escape_string($pluginVars['subdomain']);
 
+if(empty($pluginVars['pluginget']['dontshow']))
+{
+  $dontShow='';
+}else{
+  $dontShow=$mysqli->real_escape_string($pluginVars['pluginget']['dontshow']);
+  $dontShow="AND url NOT LIKE '".$dontShow."%'";
+}
+
 if(empty($pluginVars['pluginget']['showpart']))
 {
   $sql="SELECT url, id, subdomain, url_part, level, menuorder, menutitle, id, inmenu FROM ".$config->dbprefix."pages WHERE subdomain='".$subDomain."' AND active='Yes' AND inmenu!='non' AND level!='0' ".$level." ORDER BY level, menuorder, title";

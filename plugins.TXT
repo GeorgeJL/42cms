@@ -2,6 +2,7 @@
 
 [(menu)]				- menu plugin - shows unordered list(<ul><li>) of all active pages - usefull for creating menus and page maps
 [(menu?showpart=members)]		- shows only pages which url begins with "members/"
+[(menu?dontshow=members)]		- show all pages except the ones which begins with "members"
 [(menu?level=1)]			- shows only level 1 pages
 [(menu?showpart=members&level=2)]	- shows only pages which url begins with "members/" which are level 2
 [(menu?levelfrom=2&showpart=members)]	- shows only pages which are level 2 or higher and their url begins with "members/" 

@@ -118,8 +118,4 @@ else{
   $weburl=str_replace('://', '://'.$pluginVars['subdomain'].'.', $weburl);
 }
 $return.=$this->arrayToList2($menuArray, $weburl, $pluginVars['stringPath'], $flatten);
-
-
 ?>
-
-

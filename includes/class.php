@@ -239,13 +239,18 @@ class MainClass
 <ul>';
     foreach($menuArray as $value)
     {
+      if(empty($value['old_url']))
+        $slash='';
+      else
+        $slash='/';
+      
       if($value['old_url']==$resultPath)
       {
         $return.='
-<li class="active"><a href="'.$weburl.''.$value['old_url'].'/">'.$value['menutitle'].'</a>';
+<li class="active"><a href="'.$weburl.''.$value['old_url'].$slash.'">'.$value['menutitle'].'</a>';
       }else{
         $return.='
-<li><a href="'.$weburl.''.$value['old_url'].'/">'.$value['menutitle'].'</a>';
+<li><a href="'.$weburl.''.$value['old_url'].$slash.'">'.$value['menutitle'].'</a>';
       }
       if(isset($value['children'])) 
       {

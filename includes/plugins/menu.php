@@ -33,6 +33,7 @@ if(empty($pluginVars['pluginget']['showpart']))
   $showPart=$mysqli->real_escape_string($pluginVars['pluginget']['showpart']);
   $sql="SELECT url, id, subdomain, url_part, level, menuorder, menutitle, id, inmenu FROM ".$config->dbprefix."pages WHERE subdomain='".$subDomain."' AND active='Yes' AND inmenu!='non' ".$level." AND url LIKE '".$showPart."%' ORDER BY level, menuorder, title";
 }  
+
 $result=$mysqli->query($sql);
 $list=array();
 $i=0;
@@ -44,22 +45,33 @@ while ($row = $result->fetch_array())
   }else{
     $key=$key;
   }
-  //echo '<hr />';
-  //print_r($row);
-  //var_dump($pluginVars['loggedIn']);
-  //if (((!$pluginVars['loggedin'])AND(($row['inmenu']=='nologged')OR($row['inmenu']=='both') )) OR (($pluginVars['loggedin'])AND($row['inmenu']=='both')) OR (($pluginVars['loggedin'])AND(($row['inmenu']=='logged')AND(isset($_SESSION['permissions'][$row['id']]))))) 
   if ( ($row['inmenu']=='both') OR ((!$pluginVars['loggedin'])AND($row['inmenu']=='nologged')) OR (($pluginVars['loggedin'])AND(($row['inmenu']=='logged')AND(isset($_SESSION['permissions'][$row['id']])))) ) 
   {
     $url=$row['url'];
-    //$url=preg_replace('/^'.$displayPart.'/', '', $row['url']);
+    $urlPart=$row["url_part"];
+    if(empty($url))
+    {
+      $url='###';
+      $urlPart='###';
+    }else{
+      $url='###/'.$url;
+    }
+    if((!empty($pluginVars['pluginget']['flatten']))AND($pluginVars['pluginget']['flatten']==1))
+    {
+      $flatten=true;
+      $level=0;
+      $url=$urlPart;
+    }else{
+      $flatten=false;
+      $level=$row['level'];       
+    }
     $resultArr[] = array(
-      //"url" => ltrim(ltrim($row["url"], 'members'),'/'),
       "url" => $url,
       "subdomain" => $row['subdomain'],
-      "url_part" => $row["url_part"],
+      "url_part" => $urlPart,
       "treeorder" => $row["menuorder"],
       "menutitle" => $row['menutitle'],
-      "level" => $row['level'],
+      "level" => $level,
       "old_url" => $row["url"],
       "id" => $row['id']
     );
@@ -77,8 +89,6 @@ if(is_array($resultArr))
   }
 }             
 $menuArray=$this->renameKey($menuArray, false);
-//$return.=print_r($menuArray,1).'<hr />';
-  
 
 foreach($menuArray as $key=>&$value)
 {
@@ -87,8 +97,6 @@ foreach($menuArray as $key=>&$value)
     $value=$value['children'];
   }
 }
-
-//print_r($menuArray);
 
 if(!isset($menuArray[0]['url']))
 {
@@ -108,10 +116,8 @@ if(empty($pluginVars['subdomain']))
 else{
   $weburl=str_replace('://www.', '://', $config->weburl);
   $weburl=str_replace('://', '://'.$pluginVars['subdomain'].'.', $weburl);
-  
-    
 }
-$return.=$this->arrayToList2($menuArray, $weburl, $pluginVars['stringPath']);
+$return.=$this->arrayToList2($menuArray, $weburl, $pluginVars['stringPath'], $flatten);
 
 
 ?>

@@ -189,19 +189,10 @@ class MainClass
       $array2[$i]=$value;
       if(isset($value['children']))
       {
-      
-        //if(!isset($value['url']))
-        //{
-        //  $array2=$this->renameKey($value['children']);
-        //}else{
         $array2[$i]['children']=$this->renameKey($value['children']);
-        //}  
       }
       $i++;
     }
-    //if(!isset($array2['url']))
-      //$array2[0]=$this->renameKey($value['children']);
-      //echo '<hr /><br>.<br>.<br>.<br><br><br><br><br><br><br><br><br><br><pre>'.print_r($array2, true),'</pre><hr />';
     if((!isset($array2[0]['url'])) )
       $array2=$array2[0]['children'];
     return $array2;
@@ -233,16 +224,17 @@ class MainClass
     return $return;
   }
   
-  private function arrayToList2($menuArray, $weburl, $path=null)
+  private function arrayToList2($menuArray, $weburl, $path=null, $flatten=false)
   {
-    
-    $resultPath=explode('/', $path);
-    $resultPath=array_slice($resultPath, 0, $menuArray[0]['level']);
-    $resultPath=implode($resultPath, '/');
-    //echo $path.'-'.$resultPath.'<br />';
-    
-    
-    
+    if($flatten)
+    {
+      $resultPath=$path;
+    }else{
+      $resultPath=explode('/', $path);
+      $resultPath=array_slice($resultPath, 0, $menuArray[0]['level']);
+      $Temp=$resultPath;
+      $resultPath=implode($resultPath, '/');
+    }
     $return='
 <ul>';
     foreach($menuArray as $value)

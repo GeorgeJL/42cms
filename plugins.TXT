@@ -7,6 +7,7 @@
 [(menu?showpart=members&level=2)]	- shows only pages which url begins with "members/" which are level 2
 [(menu?levelfrom=2&showpart=members)]	- shows only pages which are level 2 or higher and their url begins with "members/" 
 [(menu?levelfrom=2&levelto=4)]		- shows only pages which are levels 2, 3 and 4
+[(menu?flatten=1)]			- flattens menu (all menu links are on the same level in <ul> list)
 
 
 [(members/register)]	- shows registration form

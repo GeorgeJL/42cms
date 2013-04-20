@@ -53,7 +53,7 @@ class ConfigData{
                     array(
                           'name'=>'lostpassurl', 
                           'label'=>'Forgotten password recovery link',
-                          'value'=>'lostpass',
+                          'value'=>'members/lostpass',
                           'type'=>'text',
                           'prefix'=>'--weburl--',
                           'suffix'=>'/',
@@ -64,7 +64,7 @@ class ConfigData{
                     array(
                           'name'=>'editpageurl', 
                           'label'=>'URL to your page editor',
-                          'value'=>'edit',
+                          'value'=>'members/edit',
                           'type'=>'text',
                           'prefix'=>'--weburl--',
                           'suffix'=>'/',

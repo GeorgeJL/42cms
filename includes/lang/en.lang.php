@@ -22,12 +22,20 @@ class Lang
   public $save='Save';
   public $preview='Preview';
   public $lostpass='Lost password';
+  public $remove='Remove';
+  public $description='Description';
+  public $select='select';
+  public $permissionsforuser='Select permissions for user: ';
+  public $permissionsforgroup='Select permissions for user group: ';
+  
+  
+  
   
   public $lastpassmailsubject='Password recovery on [[webname]]';
   public $lastpassmailbody='You have requested password recovery on [[webname]]. <a href="[[recovlink]]">Click here to enter new password</a> or copy & paste the following link:<hr><a href="[[recovlink]]">[[recovlink]]</a><hr> Regards Admin';
   
   
-  public $chengedpass='Password has been changed successfully. <br />Please'; //za tym bude pridany link na login
+  public $chengedpass='Password has been changed successfully. <br />Please'; //after this will be link for login
   public $passrecoverylink='A link to recover your password has been sent to your email';
   public $invalidlink='Invalid link.';
   public $login='Log In';
@@ -77,6 +85,18 @@ class Lang
   public $selectpagespermissions='In addition select pages which this user will be allowed to access';
   public $invsent='The invitation has been send to folloving email address:';
   public $invsent2='The text of the email was as following:';
+  
+  /* permissions.php */
+  public $groupid='Group ID';
+  public $groupname='Group name';
+  public $groupdisplayname='Group display name';
+  public $grouprank='Group rank';
+  public $userid='User ID';
+  public $groups='Groups';
+  public $permissionsupdated='Permissions have been successfully updated.';
+  public $wrongpermparam='Some of the parameters you have entered have been changed according to your permissions.';
+  public $emptypermissions='There are no permissions to save';
+  public $noselectedpages='There aro no pages selected';
   
   /*  registration.php  */
   public $disabledregistration='Sorry, but registration is not alowed on this website.';

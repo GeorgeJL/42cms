@@ -1,5 +1,5 @@
 <?php
-class ErrorReporting{ //each item should have 4 values: conf(00-do not show or log error, 10-just show, 01-just log, 11-show and log), stringcode-this will be written in the log), description-this is just description for admin/developer,  varlist-array vilt names of variables which should be logged
+class ErrorReporting{ //each item should have 4 values: conf(00-do not show or log error, 10-just show, 01-just log, 11-show and log), stringcode-this will be written in the log), description-this is just description for admin/developer,  varlist-array with names of variables which should be logged
   public $data=array(
     '0'      =>array(
                       'conf'=>'11',   //if not debugging recommended 00 or 01
@@ -96,6 +96,12 @@ class ErrorReporting{ //each item should have 4 values: conf(00-do not show or l
                       'stringcode'=>'WrongPass',
                       'description'=>'Inserted wrong password (on some other than login page)',
                       'varlist'=>array('_POST', '_SESSION')
+                      ),
+     '16'     =>array(
+                      'conf'=>'11',   //recommended to use 11, because it seems to be !!!HACK ATTEMPT!!! from one of the admins (user alowed manipulate permissions)  
+                      'stringcode'=>'PermissionEditorManipulation',
+                      'description'=>'User manipulated POST while using permissions.php',
+                      'varlist'=>array('_POST', 'dbGroups', 'compare', 'notAllowed', '_SESSION')
                       ),
     '404'     =>array(
                       'conf'=>'01',

@@ -11,13 +11,7 @@ if((!empty($_GET['m']))AND(!empty($_GET['id']))AND(!empty($_GET['h'])))
     $result=$mysqli->query($sql);
     $result=$result->fetch_array();
     $invitation=true;
-    $temp=json_decode($result['groups']);
-    $invitationData['groups']='';
-    foreach($temp as $key=>$value)
-    {
-      $invitationData['groups'].=','.$key;
-    }
-    $invitationData['groups']=trim($invitationData['groups'],',');
+    $invitationData['groups']=implode(json_decode($result['groups']),',');
     $invitationData['pages']=json_decode($result['pages']);
   }else{
     if($config->registration==2)
@@ -41,7 +35,7 @@ if((!empty($_GET['m']))AND(!empty($_GET['id']))AND(!empty($_GET['h'])))
 if ( ($config->registration>=1) )
 {
   if ( ($config->registration==1) OR (($invitation)AND(!empty($invitationData))) )
-  { //registration is aloved, so keep going
+  { //registration is alowed, so keep going
     if(isset($_POST['submit']))
     {
       if(preg_match('/^([a-zA-Z0-9\.\-_]{5,16})$/', $_POST['username']))

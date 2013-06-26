@@ -88,12 +88,20 @@ class MainClass
     $rows=array();//this line is added to create empty array in case there are no permission for current user/usergroup - session hash function use 'serialize' so it need ALWAYS array, even if it is the empty one;
     while($row=$result->fetch_array())
     {
-      if(isset($rows[$row[0]])AND($rows[$row[0]]!=='0'))
+      if($row[0]==0)
       {
-        $rows[$row[0]].=','.$row[1];
-        $multipleParams=true;
+        if(isset($rows[$row[0]])AND($rows[$row[0]]!=='0'))
+        {
+          $rows[$row[0]].=','.$row[1];
+          $multipleParams=true;
+        }else{
+          $rows[$row[0]]=$row[1];
+        }
       }else{
-        $rows[$row[0]]=$row[1];
+        if(!isset($rows[$row[0]])OR($rows[$row[0]]<$row[1]))
+        {
+          $rows[$row[0]]=$row[1];
+        }
       }  
     }
     if(!empty($multipleParams))

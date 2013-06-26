@@ -19,7 +19,8 @@ class ErrorText
            12=>'Your account was probably already activated. Try to Log In',  
            13=>'There was an error. Check if you have copied the password recovery link correctly.',
            14=>'--DEFAULT--',
-           15=>'You have entered invalid password'
+           15=>'You have entered invalid password',
+           16=>'--DEFAULT--'
             );
 }
 ?>

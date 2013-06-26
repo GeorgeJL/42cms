@@ -319,7 +319,7 @@ class ConfigData{
                           'label'=>'Registration types',
                           'value'=>'1',
                           'type'=>'select',
-                          'formdata'=>'{"0": "Registrations are disable","1": "Registrations are allowed","2": "Registration is allowed only on invitation"}',
+                          'formdata'=>'{"0": "Registrations are disabled","1": "Registrations are allowed","2": "Registration is allowed only on invitation"}',
                           'description'=>'alowed values 0(or anything smaller than 1)-disabled registration, 1-alowed registration, 2-registration only on invitations',
                           'step'=>'5',
                           'advanced'=>false

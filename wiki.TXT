@@ -1,0 +1,124 @@
+
+     -======================================================¬
+     ¦ -==================================================¬ ¦
+     ¦ ¦                  P L U G I N S                   ¦ ¦
+     ¦ L==================================================- ¦
+     L======================================================-
+
+- if you would like to edit inserted plugin via Page editor, for safety reasons you must use text editor (click "Use text editor")
+
+[(menu)]				- menu plugin - shows unordered list(<ul><li>) of all active pages - useful for creating menus and page maps
+[(menu?showpart=members)]		- shows only pages which URL begins with "members/"
+[(menu?dontshow=members)]		- show all pages except the ones which begins with "members"
+[(menu?level=1)]			- shows only level 1 pages
+[(menu?showpart=members&level=2)]	- shows only pages which URL begins with "members/" which are level 2
+[(menu?levelfrom=2&showpart=members)]	- shows only pages which are level 2 or higher and their URL begins with "members/" 
+[(menu?levelfrom=2&levelto=4)]		- shows only pages which are levels 2, 3 and 4
+[(menu?flatten=1)]			- flattens menu (all menu links are on the same level in <ul> list)
+
+
+[(members/register)]	- shows registration form
+
+
+[(gallery?id=1)]	- shows images of gallery with id 1
+
+
+[(show_galleries?id=1,3,9,5)]	- shows list of galleries 1, 3, 9, and 5 in this order
+
+
+[(members/info)]	- shows content of following PHP variables: $_SERVER, $config, $pluginVars, $_POST, $_SESSION and $_COOKIE
+			- while debugging some plugin enter this plugin in the same page (via Page editor)
+
+...and many more.
+
+
+
+- all the .php files in folder plugins (and all subfolders) can be called as plugin e.g. file "includes/plugins/members/logout.php" is called "[(members/logout)]" -without "includes/plugins/" and ".php"
+
+- to create plugin, simply place your .php file into folder "includes/plugins". For your plugin might be very useful these variables: "$config" containing configuration of the script and "$pluginVars" some other plugin specific data
+
+- plugin is entered into page text by replacing its placeholder (e.g. [(menu)]) with content of variable "$return"
+
+
+
+     -======================================================¬
+     ¦ -==================================================¬ ¦
+     ¦ ¦           U S E R   M A N A G E M E N T          ¦ ¦
+     ¦ L==================================================- ¦
+     L======================================================-
+  
+         -==============================================¬ 
+         ¦                REGISTRATION                  ¦ 
+         L==============================================- 
+- there are 3 options for registrations: disabled, allowed and invitation only. To change this options, you need to edit your config.php file (located in "includes" folder)
+        OPTION                                          VALUE
+      Registrations are disabled                         "0"
+      Registrations are allowed                          "1"
+      Registration is allowed only on invitation         "2"
+      
+         -==============================================¬ 
+         ¦                USER GROUPS                   ¦ 
+         L==============================================- 
+- in default, there are 5 user groups:
+    User        -   Registered user
+    Publisher   -   Access to some publishing functions   
+    Admin       -   One of the admins. Access to most of the functions
+    Superadmin  -   Access to everything except highly technical functions created for developers
+    Owner       -   Access to everything. The highest possible rank
+- every user can be member of more groups. If is a user member of more groups he will have permissions of all this groups. If the user gains the same permission from more groups with different parameter, he will have assigned the highest parameter       
+- go to "Permissions" in your admin panel to edit these user groups or add specific permissions for single user
+  
+         -==============================================¬ 
+         ¦           PERMISSION PARAMETERS              ¦ 
+         L==============================================- 
+- some of the permissions use different parameters than 0
+        members/invitations  -  parameter means the rank
+        members/permissions  -  parameter means the rank
+- you can get some extra features by directly editing the database ("permissions" table)
+          FIELD NAME        DESCRIPTION
+        userid            -single user id for selected user. If selecting permissions for usergroups leave "0"
+        groupid           -single group id for selected group. If selecting permissions for single users leave "0"
+        permission        -id of single page (from database table "pages")
+        parameters        -place to add numeric parameter. If one user gains the same permission from more groups with different parameter, he will have assigned the highest parameter
+      NOTES:
+      - to assign a page to all users place "0" in userid and "0" in groupid
+      - to add for a user (or group) permission to edit just some of the pages using page editor (Members panel -> Edit page) fill into permission field "0" and into parameters field fill comma separated list of allowed pages 
+      EXAMPLES:
+      userid    -  groupid  -  permission   -  parameters
+        3             0            20              0           -  user with id 3 can access page with id 20
+        0            300           22              0           -  all users from group 200 can access page with id 22
+        0             0            24              0           -  all registered users can access page with id 24
+        5             0            0          100,101,102      -  user with id 5 can edit pages with ids 100, 101 and 102 using page editor
+!! IMPORTANT !!
+  - some pages needs access for some other pages and selected user(or group) must have access to both of this pages
+       "members/invitations" needs "members/permissions/load" to work   
+       "members/addpage" needs "members/addpage/load" to work
+       "members/edit" needs "members/edit/load" and "members/edit/upload" to work
+       "members/addimages" needs "members/addimages/upload" to work
+       "members/permissions" needs "members/permissions/load" to work
+       
+
+     -======================================================¬
+     ¦ -==================================================¬ ¦
+     ¦ ¦                 T E M P L A T E S                ¦ ¦
+     ¦ L==================================================- ¦
+     L======================================================-
+       
+- there are currently pre-installed 3 templates
+    template 1      -    default administration interface template
+  	template 2      -    the same but with tree
+  	template 10     -    your default 'public' template
+- there are also another two template numbers to use in Page editor
+             0      -    inserts just default doctype(HTML 5) and placeholders ([[title]], [[h1]] and [[body]])
+            -1      -    inserts just page text - not even doctype or <html> tags just [[body]]
+- to create template place your files (html, css, js, images...) into includes/templates/TEMPLATE_NUMBER folder (replace TEMPLATE_NUMBER with desired template number) and add into database table your template id (this is the name of the template folder) and name of template (or short description)
+- you can use in your templates four default placeholders:
+    [[title]]  - title of the website (place into <title> tag)
+    [[h1]]     - main page heading (you should place it into <h1> tag)
+    [[body]]   - content of the page
+    [[user]]   - displays link to default members page with username (e.g.: <a href="http://www.example.com/members/">admin</a> 
+
+- to get website URL (home URL, not current URL) use chunk placeholder:  [{weburl}]  (will be replaced with e.g.: http://www.example.com/  -without <a> tag)    
+    
+    
+         

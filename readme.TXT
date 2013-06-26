@@ -27,12 +27,10 @@ INSTALATION:
 
 NOTES:
 
--to see the list of plugins pre-installed on your 42cms site se "plugins.TXT"file
+-to get more info see "wiki.TXT" file
 
--if you would like to edit inserted plugin via Page editor, for safety reasons you must use text editor (click "Use text editor")
-
--your templates are located in "includes/templates" folder
-	template 1 is default administration interface template
-	template 2 is the same but with tree
-	template 10 is your default 'public' template
-
+     -======================================================¬
+     ¦ -==================================================¬ ¦
+     ¦ ¦      g o    t o    s e e    w i k i . T X T      ¦ ¦
+     ¦ L==================================================- ¦
+     L======================================================-

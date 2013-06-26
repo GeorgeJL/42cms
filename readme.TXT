@@ -1,5 +1,5 @@
 
-INSTALATION:
+INSTALLATION:
 
 
 1. Move all the files into desired directory on your web hosting

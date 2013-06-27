@@ -115,6 +115,18 @@ class MainClass
     }    
     return $rows;
   }
+  
+  public function reloadPermissions($mysqli, $config)
+  {
+    $sql="SELECT salt, cookieid, usergroups FROM ".$config->dbprefix."users WHERE id='".$mysqli->real_escape_string($_SESSION['userid'])."'";
+    $result=$mysqli->query($sql);
+    echo $mysqli->error;
+    $row=$result->fetch_assoc();
+    $_SESSION['permissions']=$this->getPermissions($mysqli, $_SESSION['userid'], $row['usergroups']);
+    $hash='G2./.S9A77I1MKQItXkg/Vg6'.$_SESSION['userid'].$row['cookieid'].serialize($_SESSION['permissions']).$_SESSION['username'].$_SESSION['mail'].$_SESSION['lang'].$row['salt'];
+    $hash=crypt(md5($hash).$hash, $config->crypt.$this->salt());
+    $_SESSION['hash']=$hash;
+  }
 
   public function pluginIncluder($data, $pluginVars, $config, $mysqli, $lang)
   {

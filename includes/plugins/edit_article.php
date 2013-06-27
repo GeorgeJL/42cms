@@ -1,4 +1,5 @@
 <?php
+$return='<pre>'.print_r($_POST,1).'</pre><hr />';
 if(isset($_POST['editNewId'])AND(preg_match('/([0-9]{1,10})/', $_POST['editNewId'])))
 {
   $activeId=$_POST['editNewId'];
@@ -144,6 +145,7 @@ if( (isset($pluginVars['afterpath'])AND(preg_match('/^[0-9]{1,5}$/', $pluginVars
     <input type="hidden" id="id" name="id" value="'.$result['id'].'">
     <input type="hidden" id="level" name="level" value="'.$result['level'].'">
     <input type="hidden" id="previewpagecaption" name="previewpagecaption" value="'.$lang->previewpagecaption.'">
+    <input type="hidden" id="membersonlybefore" name="membersonlybefore" value="'.$result['membersonly'].'">
 
     <label for="id">'.$lang->pageid.':</label>                <span id="id">'.$result['id'].'</span><br />
     <label for="active">'.$lang->active.':</label>            '.$active.'<br />
@@ -454,8 +456,18 @@ $(function() {
     }else{
       $sqlData['active']='No';
     }
-    if(isset($_POST['membersonly'])AND($_POST['membersonly']=='on')){
+    if(isset($_POST['membersonly'])AND($_POST['membersonly']=='on'))
+    {
       $sqlData['membersonly']='Yes';
+      if(!isset($_SESSION['permissions'][$_POST['id']]))
+      {
+        if($_POST['membersonlybefore']=='No')
+        {
+          $subSql='INSERT INTO '.$config->dbprefix.'permissions (userid, permission) VALUES ("'.$mysqli->real_escape_string($_SESSION['userid']).'", "'.$mysqli->real_escape_string($_POST['id']).'" )';
+          $mysqli->query($subSql);
+          $class->reloadPermissions($mysqli, $config);
+        }
+      }
     }else{
       $sqlData['membersonly']='No';
     }

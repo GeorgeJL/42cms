@@ -1,5 +1,4 @@
 <?php
-$return='<pre>'.print_r($_POST,1).'</pre><hr />';
 if(isset($_POST['editNewId'])AND(preg_match('/([0-9]{1,10})/', $_POST['editNewId'])))
 {
   $activeId=$_POST['editNewId'];

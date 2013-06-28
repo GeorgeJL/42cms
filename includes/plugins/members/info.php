@@ -1,4 +1,9 @@
-<?php
+<?php /* v1.1.0 */
+if(!empty($_POST['reloadPermissions']))
+{
+  $class->reloadPermissions($mysqli, $config);
+}
+$return.='<form method="post"><input type="hidden" name="reloadPermissions" value="true"><input type="submit" value="Reload permissions"></form>';
 //session_start();
 $return.='<hr /><pre>SERVER: <br />'.print_r($_SERVER, true).'</pre>';
 $return.='<hr /><pre>PLUGIN config: <br />'.print_r($config, true).'</pre>';

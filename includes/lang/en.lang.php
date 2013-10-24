@@ -27,8 +27,9 @@ class Lang
   public $select='select';
   public $permissionsforuser='Select permissions for user: ';
   public $permissionsforgroup='Select permissions for user group: ';
-  
-  
+  public $recommended='recommended';
+
+                                        
   
   
   public $lastpassmailsubject='Password recovery on [[webname]]';
@@ -40,6 +41,7 @@ class Lang
   public $invalidlink='Invalid link.';
   public $login='Log In';
   public $notallowed='Access not allowed.';
+  public $notactivated='Your account have not been activated yet. Please check your e-mail.';
   public $loggedout='You have been logged out.';
   
   /* add_page.php */
@@ -78,7 +80,7 @@ class Lang
   public $non='do not show in menu';
   public $loading='Loading';
   
-  /*  invitations.php  */
+  /*  members/invitations.php  */
   public $nopermtoassign='No user permissions to assign';
   public $nogroupstoassign='No user groups to assign';
   public $selectusergroups='Select usergroups for this user';
@@ -86,7 +88,7 @@ class Lang
   public $invsent='The invitation has been send to folloving email address:';
   public $invsent2='The text of the email was as following:';
   
-  /* permissions.php */
+  /* members/permissions.php */
   public $groupid='Group ID';
   public $groupname='Group name';
   public $groupdisplayname='Group display name';
@@ -98,17 +100,17 @@ class Lang
   public $emptypermissions='There are no permissions to save';
   public $noselectedpages='There aro no pages selected';
   
-  /*  registration.php  */
+  /*  members/registration.php  */
   public $disabledregistration='Sorry, but registration is not alowed on this website.';
   public $noinvitation='Sorry, but registration is on invitation only.';
   public $activsent='The activation mail has been sent to the folloving email address:';
   public $activmailsubject='Activate your account at [[webname]]';
   public $activmailbody='You have successfully registered on [[webname]]. <a href="[[activlink]]">Click here to confirm your registration</a> or copy & paste the following link:<hr><a href="[[activlink]]">[[activlink]]</a><hr> Regards Admin';
   
-  /*  activation.php  */
+  /*  members/activation.php  */
   public $activatednow='Your account has been activated successfully';
   
-  /*  logout.php  */
+  /*  members/logout.php  */
   public $logoutok='You have been successfully logged out';
   public $returnhome='You can now return to ';
   public $homepage='home page.';
@@ -136,13 +138,28 @@ class Lang
   public $goback='Go back!';
   public $emptytable='This table is empty';
   
-  /* changepass.php */
+  /* members/changepass.php */
   public $curpassword='Current password';                      
   public $newpassword='New password';                      
   public $newpasswordagain='New password again';                      
   public $passchanged='Your password has been successfully changed. Please <a href="[{weburl}]members/logout/">log out</a> and log in again.';
 
-
+  /* update/update.php */
+  public $startupdate='Start update';
+  public $havelatestversion='You have the latest version of 42cms';
+  public $updateProgress='Update in progress. Please do not refresh or leave this page. Update may take up to few minutes.';
+  public $successfulUpdate='Congratulation. You have successfully updated to version ';
+  
+  /* update/check_for_update */
+  public $pleaseupdate='New version available'; 
+  public $cryticalupdate='Crytical update!!!';
+  public $importantupdate='Important update!';
+  public $optionalupdate='Optional update.';
+  public $cryticalupdatetitle='Please update ASAP!!!';
+  public $importantupdatetitle='Please update.';
+  public $optionalupdatetitle='It is not essential to update.';
+  
+  
 /*
   public $='';
   

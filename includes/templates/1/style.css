@@ -65,6 +65,9 @@ label{display:inline-block;margin:10px 0px;width:300px;text-align:right;padding-
 #username a{color:#5f0}
 #version{position:relative;float:right}
 #version a{font-size:12px}
+a.newversion.crytical{color: #f00 !important}
+a.newversion.important{color: #fa0 !important}
+a.newversion.optional{color: #0f0 !important}
 /* rozne tabulky */
 table{border:1px solid #090} 
 td{padding:5px 12px;border:1px solid #090} 

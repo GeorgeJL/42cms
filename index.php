@@ -16,7 +16,7 @@ $sql="SET NAMES ".$config->dbnameset." COLLATE ".$config->dbcollate;
 $mysqli->query($sql);
 $mysqli->dbprefix=$config->dbprefix;  //required in class.php
 
-if(isset($_POST['step'])AND($_POST['step']=='preview')) //preview Mode is used for previewing page without saving it. Script recieves page data by post(not from DB)
+if(isset($_POST['step'])AND($_POST['step']=='preview')) //preview mode is used for previewing page without saving it. Script recieves page data by post(not from DB)
 { 
   $previewMode=true;
   $result['url']=$_POST['url'];
@@ -101,7 +101,6 @@ if ($result['template']>0)
 }else{
   $template='[[body]]';
 }
-
 $template=str_replace('[{template_folder}]', $config->weburl.'includes/templates/'.$result['template'].'/', $template);
 //end of template insertion
 
@@ -138,8 +137,7 @@ if(@$loggedIn!==true)
       }else{
         $useCaptcha=false;
       }
-    }  
-    
+    }
     if($useCaptcha)
     {
       if($_POST["recaptcha_response_field"])
@@ -161,7 +159,6 @@ if(@$loggedIn!==true)
     }else{
       $captchaOk=true;
     }  
-    
     if($captchaOk)
     {    
       $username=$mysqli->real_escape_string($_POST['username']);
@@ -260,7 +257,6 @@ if($loadLang)
     }
   */
     $langId=$config->lang;
-    
     include_once('includes/lang/'.$langId.'.lang.php');
     $langData=new Lang;
 } 
@@ -273,8 +269,8 @@ if ($membersOnly){
     } else {
       $pageText.=$langData->noallowed;
     }
-  } else if($accountActivated===false){  //login attempt without activating account (email confirmation)
-
+  }else if($accountActivated===false){  //login attempt without activating account (email confirmation)
+    $pageText.=$langData->notactivated;
   }else{
     if(@$loggedIn===false){
       $incorrect=' class="incorrect"';
@@ -316,7 +312,7 @@ if ($membersOnly){
 //overwriting html elements (<title>, <h1> and main content of the page) into TEMPLATE 
 $pageText=str_replace(array('[[title]]', '[[h1]]', '[[body]]', '[[user]]'), array($result['title'], $result['h1'], $pageText, '<a href="'.$config->membersurl.'">'.@$_SESSION['username'].'</a>'), $template);
 
-/*insertion of plugins-beginning -insertion of plugin return on the place of placeholder    e.g.    [(pluginname)]   or  [(pluginname?param1=val1&param2=val2)]*/
+/*insertion of plugins-beginning -content of plugin $return variable inserted on the place of placeholder    e.g.    [(pluginname)]   or  [(pluginname?param1=val1&param2=val2)]*/
 preg_match_all('/(\[\()(.+?)(\)\])/', $pageText, $matches);
 $placeholder=$matches[0];
 $matches=$matches[2];
@@ -324,53 +320,19 @@ $dbUrlPath=explode('/', trim($result['url'], '/'));
 $dbUrlPath=array_filter($dbUrlPath);  //removes empty values
 $partPath=implode('/', array_diff($path, $dbUrlPath));
 
-$partConfig->domain=$config->domain;
-$partConfig->webname=$config->webname;
-$partConfig->weburl=$config->weburl;
-$partConfig->membersurl=$config->membersurl;
-$partConfig->registerurl=$config->registerurl;
-$partConfig->lostpassurl=$config->lostpassurl;
-$partConfig->imagesfolder=$config->imagesfolder;
-$partConfig->datafolder=$config->datafolder;
-$partConfig->filesfolder=$config->filesfolder;
-$partConfig->galleryfolder=$config->galleryfolder;
-$partConfig->dbprefix=$config->dbprefix;
-$partConfig->lang=$langId;
-$partConfig->cookieprefix=$config->cookieprefix;
-$partConfig->crypt=$config->crypt;
-$partConfig->passstrenght=$config->passstrenght;
-$partConfig->registration=$config->registration;
-$partConfig->cookieprefix=$config->cookieprefix;
-$partConfig->editpageurl=$config->editpageurl;
-$partConfig->noticeboardurl=$config->noticeboardurl;
-$partConfig->pluginsfolder=$config->pluginsfolder;
-$partConfig->debuggingmode=$config->debuggingmode;
-$partConfig->jquerysource=$config->jquerysource;
-$partConfig->jqueryuisource=$config->jqueryuisource;
-$partConfig->jqueryuithemesource=$config->jqueryuithemesource;
-$partConfig->maxfilesize=$config->maxfilesize;
-$partConfig->maxfilecount=$config->maxfilecount;
-$partConfig->maxchunksize=$config->maxchunksize;
-$partConfig->invmailsubject=$config->invmailsubject;
-$partConfig->invmailbody=$config->invmailbody;
-$partConfig->invsendermail=$config->invsendermail;
-$partConfig->activsendermail=$config->activsendermail;
-$partConfig->recovsendermail=$config->recovsendermail;                                               
-//$partConfig->=$config->;
+$config->lang=$langId;
+//$config->pageid=$pageId;
 
-$partConfig->pageid=$pageId;
-
-$pluginVars=array('weburl'=>$config->weburl, 'loggedin'=>@$loggedIn, 'membersonly'=>$membersOnly, 'afterpath'=>$partPath, 'salt'=>$class->salt(), 'stringPath'=>$stringPath, 'subdomain'=>$subDomain); //this variables will be passed to plugins and addons 
+$pluginVars=array('weburl'=>$config->weburl, 'loggedin'=>@$loggedIn, 'membersonly'=>$membersOnly, 'afterpath'=>$partPath, 'salt'=>$class->salt(), 'stringPath'=>$stringPath, 'subdomain'=>$subDomain, 'pageId'=>$pageId); //this variables will be passed to plugins and addons 
 unset($pluginVars['salt']);
 if (isset($matches[0]))
 {//there are some plugins
   foreach($matches as $key => $value){
     $thisPluginPath=explode('?', $value);
     $thisPluginFolder=explode('/', $thisPluginPath[0]);
-    //$thisPluginFolder=array_reverse($thisPluginFolder);
     $thisPluginFolder=rtrim($thisPluginPath[0], end($thisPluginFolder)); 
     $pluginVars['thispluginfolder']=$config->weburl.'includes/plugins/'.$thisPluginFolder;
-    $replaceWith=$class->pluginIncluder($value, $pluginVars, $partConfig, $mysqli, @$langData);
+    $replaceWith=$class->pluginIncluder($value, $pluginVars, $config, $mysqli, @$langData);
     $pos = strpos($pageText,$placeholder[$key]);
     if ($pos !== false) {
         $pageText = substr_replace($pageText,$replaceWith,$pos,strlen($placeholder[$key]));
@@ -379,7 +341,7 @@ if (isset($matches[0]))
 }
 /*insertion of plugins-end*/
 
-/*insertion of chunks-text from DB (html, CSS, js...)           [{textchunk}]   do not use any paramater because it is not active   WARNING!!! [{}]can conflict with JSON  */
+/*insertion of chunks - text from DB (html, CSS, js...)           [{textchunk}]   do not use any paramater because it is not active   WARNING!!! [{}]can conflict with JSON  */
 preg_match_all('/(\[\{)([^\{\[\}\]]+)(\}\])/', $pageText, $matches);
 $placeholder=$matches[0];
 $matches=$matches[2];
@@ -403,18 +365,15 @@ if(isset($matches[0]))
 }  
 /*insertion of chunks from DB-end*/
 
-/*insertion of ADDONS-beginning*/
+/*insertion of ADDONS - beginning*/
 $pageText=$class->addonIncluder($addons, $pageText, $pluginVars, $config->debuggingmode);
-/*insertion of ADDONS-end*/
+/*insertion of ADDONS - end*/
 
 if(@$previewMode){
   $pageText=str_ireplace('<body>', '<div style="position: relative; top: 0px; left: 0px; width: 100%; height: 50px; margin: 0px; padding: 0px;"></div>', $pageText);
   $pageText.='<div style="position: fixed; top: 0px; left: 0px; width: 100%; height: 50px; border-bottom: 1px solid black; background-color: rgba(255,0,0,0.8); text-align: center; color: white; font-size: 2em">'.$_POST['previewpagecaption'].'</div>';
 }
 
-//$pageText.=$class->errorLog('0',get_defined_vars());
-//$this->errorLog('0',get_defined_vars());
 echo $pageText;
-//echo '<pre>'.print_r(get_included_files(),true).'</pre><b>Page text:</b><hr style="height: 10px; background-color: black">';
 $mysqli->close();
 ?>

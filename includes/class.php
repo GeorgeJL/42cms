@@ -335,10 +335,34 @@ class MainClass
     return $url;
   }
 
-  
-
-
-
-
+  public function getContent($url)
+  {
+    $ch = curl_init();
+    curl_setopt ($ch, CURLOPT_URL, $url);
+    curl_setopt ($ch, CURLOPT_HEADER, 0);
+    ob_start();
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); //BUT THIS IS A SECURITY ISSUE. See: http://stackoverflow.com/questions/6400300/php-curl-https-causing-exception-ssl-certificate-problem-verify-that-the-ca-cer
+    curl_exec ($ch);
+    curl_close ($ch);
+    $string = ob_get_contents();
+    ob_end_clean();
+    return $string;     
+  }
+  public function deleteDir($dir) 
+  {
+    if (is_dir($dir)) 
+    {
+      $objects = scandir($dir);
+      foreach ($objects as $object)
+      {
+        if ($object != "." && $object != "..")
+        {
+          if (filetype($dir."/".$object) == "dir") rrmdir($dir."/".$object); else unlink($dir."/".$object);
+        }
+      }
+      reset($objects);
+      rmdir($dir);
+    }
+  }
 }
 ?>

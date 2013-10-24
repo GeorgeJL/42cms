@@ -73,6 +73,17 @@ class ConfigData{
                           'advanced'=>true
                          ),
                     array(
+                          'name'=>'updatepageurl', 
+                          'label'=>'URL to your update page',
+                          'value'=>'members/update',
+                          'type'=>'text',
+                          'prefix'=>'--weburl--',
+                          'suffix'=>'/',
+                          'description'=>'',
+                          'step'=>'3',
+                          'advanced'=>true
+                         ),
+                    array(
                           'name'=>'imagesfolder', 
                           'label'=>'Folder where will be stored images',
                           'value'=>'images',
@@ -156,6 +167,24 @@ class ConfigData{
                           'advanced'=>true
                          ),
                     array(
+                          'name'=>'versionserver', 
+                          'label'=>'URL used for automatic version check',
+                          'value'=>'http://update.42cms.com/current-version/',
+                          'type'=>'text',
+                          'description'=>'Do not change!',
+                          'step'=>'3',
+                          'advanced'=>true
+                         ),
+                    array(
+                          'name'=>'updateserver', 
+                          'label'=>'URL used for automatic updates',
+                          'value'=>'http://update.42cms.com/data/',
+                          'type'=>'text',
+                          'description'=>'Do not change!',
+                          'step'=>'3',
+                          'advanced'=>true
+                         ),
+                    array(
                           'name'=>'debuggingmode', 
                           'label'=>'Debugging mode',
                           'value'=>true,
@@ -181,6 +210,16 @@ class ConfigData{
                           'type'=>'number',
                           'min'=>'1',
                           'description'=>'id of LogOut in pages table',
+                          'step'=>'5',
+                          'advanced'=>true
+                         ),
+                    array(
+                          'name'=>'idupdate', 
+                          'label'=>'Page id (in database) of update page',
+                          'value'=>'3',
+                          'type'=>'number',
+                          'min'=>'1',
+                          'description'=>'id of update in pages table',
                           'step'=>'5',
                           'advanced'=>true
                          ),
@@ -457,7 +496,44 @@ class ConfigData{
                           'description'=>'this e-mail address will be used as a sender of invitations',
                           'step'=>'5',
                           'advanced'=>false
+                         ),
+                    array(
+                          'name'=>'installedversion', 
+                          'label'=>'Originally installed version of 42cms',
+                          'value'=>'1.1.0',
+                          'type'=>'text',
+                          'description'=>'',
+                          'step'=>'5',
+                          'advanced'=>true
+                         ),
+                    array(
+                          'name'=>'installedbuild', 
+                          'label'=>'Originally installed build of 42cms',
+                          'value'=>'2',
+                          'type'=>'text',
+                          'description'=>'',
+                          'step'=>'5',
+                          'advanced'=>true
+                         ),
+                    array(
+                          'name'=>'localversion', 
+                          'label'=>'Currently installed version of 42cms',
+                          'value'=>'1.1.0',
+                          'type'=>'text',
+                          'description'=>'',
+                          'step'=>'5',
+                          'advanced'=>true
+                         ),
+                    array(
+                          'name'=>'localbuild', 
+                          'label'=>'Currently installed build of 42cms',
+                          'value'=>'2',
+                          'type'=>'text',
+                          'description'=>'',
+                          'step'=>'5',
+                          'advanced'=>true
                          )
+                         
                     /*
                     array(
                           'name'=>'', 

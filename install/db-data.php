@@ -179,13 +179,12 @@ $sql[]=array('desc'=>"templates table", 'data'=>"CREATE TABLE IF NOT EXISTS `".$
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;");
 
-$sql[]=array('desc'=>"templates data", 'data'=>"(SET SESSION sql_mode='NO_AUTO_VALUE_ON_ZERO';) UNION ALL 
-(INSERT INTO `".$dbprefix."templates` (`id`, `name`) VALUES
+$sql[]=array('desc'=>"templates data", 'data'=>"INSERT INTO `".$dbprefix."templates` (`id`, `name`) VALUES
 (1, 'insert just page text - not even doctype or <html> tags just [[body]]'),
 (2, 'No template (just default doctype and placeholders)'),
 (3, 'Members area'),
 (4, 'Members area with tree'),
-(10, 'Default template');)");
+(10, 'Default template');");
 
 $sql[]=array('desc'=>"usergroups table", 'data'=>"CREATE TABLE IF NOT EXISTS `".$dbprefix."usergroups` (
   `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
@@ -221,8 +220,7 @@ $sql[]=array('desc'=>"users table", 'data'=>"CREATE TABLE IF NOT EXISTS `".$dbpr
   UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;");
 
-$sql[]=array('desc'=>"users data", 'data'=>"SET SESSION sql_mode='NO_AUTO_VALUE_ON_ZERO';
-INSERT INTO `".$dbprefix."users` (`id`, `username`, `pass`, `salt`, `mail`, `usergroups`, `lang`, `cookieid`, `registred`, `lastupdate`, `activated`) VALUES
+$sql[]=array('desc'=>"users data", 'data'=>"INSERT INTO `".$dbprefix."users` (`id`, `username`, `pass`, `salt`, `mail`, `usergroups`, `lang`, `cookieid`, `registred`, `lastupdate`, `activated`) VALUES
 (1, 'system', '0', '0', '0', '0', 'en', 0, '0000-00-00 00:00:00', '2013-02-22 12:51:58', 'No'),
 (2, 'admin', '$2y$09$6lCq9h/7i0h39.620W0I/Odv2NA4jxjlcxNnK6E9IU.gRa8MubavS', 'HcgvJb.OmO4pJ/2v/.je96', 'admin@example.com', '100,200,300,400,500', 'en', 8174, '0000-00-00 00:00:00', '2013-02-28 14:13:42', 'Yes');");
 

@@ -142,7 +142,7 @@ class ConfigData{
                     array(
                           'name'=>'jquerysource', 
                           'label'=>'Source of jQuery file',
-                          'value'=>'https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js',
+                          'value'=>'http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js',
                           'type'=>'text',
                           'description'=>'',
                           'step'=>'3',
@@ -151,7 +151,7 @@ class ConfigData{
                     array(
                           'name'=>'jqueryuisource', 
                           'label'=>'Source of jQuery UI file',
-                          'value'=>'https://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js',
+                          'value'=>'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js',
                           'type'=>'text',
                           'description'=>'',
                           'step'=>'3',
@@ -160,7 +160,7 @@ class ConfigData{
                     array(
                           'name'=>'jquerythemesource', 
                           'label'=>'Source of jQuery UI theme file',
-                          'value'=>'http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/vader/jquery-ui.css',
+                          'value'=>'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/vader/jquery-ui.css',
                           'type'=>'text',
                           'description'=>'check: http://blog.jqueryui.com/2012/11/jquery-ui-1-9-2/',
                           'step'=>'3',

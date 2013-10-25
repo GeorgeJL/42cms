@@ -128,7 +128,7 @@ $sql[]=array('desc'=>"pages data", 'data'=>"INSERT INTO `".$dbprefix."pages` (`i
 (29, '', 'members/info', 'info', 2, 'Debugging info', 'logged', 'Debugging info', 'Yes', 'No', 'Debugging info', '<p>[(members/info)]</p>', 3, '', 910, 'Yes', '2013-02-22 12:32:07'),
 (40, '', 'members/permissions', 'permissions', 2, 'Permissions', 'logged', 'Permissions', 'Yes', 'No', 'Permissions', '<p>[(members/permissions)]</p>', 4, '', 0, 'Yes', '2013-06-03 15:04:15'),
 (41, '', 'members/permissions/load', 'load', 3, '', 'non', '', 'Yes', 'Yes', '', '<p>[(members/permissions?load=true)]</p>', 1, '', 0, 'Yes', '2013-06-03 15:13:47'),
-(100, '', '', '', 0, 'HomePage', 'both', 'Homepage', 'No', 'No', 'Homepage', '<p>This is default home page of 42cms v 1.0</p>\r\n<p> </p>\r\n<p>Visit <a href=\"http://www.42cms.com\" target=\"_blank\">www.42cms.com</a> for more info.</p>', 10, '', 0, 'Yes', '2013-02-25 17:33:50'),
+(100, '', '', '', 0, 'HomePage', 'both', 'Homepage', 'No', 'No', 'Homepage', '<p>This is default home page of 42cms</p>\r\n<p> </p>\r\n<p>Visit <a href=\"http://www.42cms.com\" target=\"_blank\">www.42cms.com</a> for more info.</p>', 10, '', 0, 'Yes', '2013-02-25 17:33:50'),
 (101, '', 'gallery', 'gallery', 1, 'Gallery', 'both', 'Gallery', 'No', 'Yes', 'Gallery', '<p>[(gallery?id=1)]</p>', 10, '', 1, 'Yes', '2013-02-25 17:45:30');");
 
 $sql[]=array('desc'=>"passresset table", 'data'=>"CREATE TABLE IF NOT EXISTS `".$dbprefix."passreset` (

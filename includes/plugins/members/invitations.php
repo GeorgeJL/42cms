@@ -1,6 +1,7 @@
 <?php
+$pageId=$pluginVars['pageId'];
 if($_POST['step']=='2'){
-  $maxRank=max(explode(',',$_SESSION['permissions'][$config->pageid]));
+  $maxRank=max(explode(',',$_SESSION['permissions'][$pageId]));
   if(!empty($_POST['addgroups']))
   {
     $sql='SELECT id FROM '.$config->dbprefix.'usergroups WHERE rank<="'.$maxRank.'"';
@@ -103,7 +104,7 @@ if($_POST['step']=='2'){
   </style>
   
   ';
-  $maxRank=max(explode(',',$_SESSION['permissions'][$config->pageid]));
+  $maxRank=max(explode(',',$_SESSION['permissions'][$pageId]));
   $sql="SELECT id, name, displayname, description, rank FROM `".$config->dbprefix."usergroups` WHERE active='Yes' AND rank<=".$maxRank." ORDER BY id ASC";
   $result=$mysqli->query($sql);
   $return.='<form method="post">

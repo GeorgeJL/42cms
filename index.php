@@ -88,7 +88,7 @@ if($result['membersonly']=='Yes')
 }
 
 //template insertion
-if ($result['template']>0)
+if ($result['template']>2)
 {
   @$template=file_get_contents('includes/templates/'.$result['template'].'/index.html');
   if ($template==false)
@@ -96,7 +96,7 @@ if ($result['template']>0)
     $template='<!DOCTYPE HTML><html><head><title>[[title]]</title></head><body><h1>[[h1]]</h1>[[body]]</body></html>';
     $pageText.=$class->errorLog('1', $GLOBALS);  //NoTemplate error
   }
-}else if($result['template']==0){
+}else if($result['template']==2){
   $template='<!DOCTYPE HTML><html><head><title>[[title]]</title></head><body><h1>[[h1]]</h1>[[body]]</body></html>';
 }else{
   $template='[[body]]';

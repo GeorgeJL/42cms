@@ -1,5 +1,5 @@
 <?php
-
+$pageId=$pluginVars['pageId'];
 if($pluginVars['pluginget']['load'])
 {
   $id=$mysqli->real_escape_string($pluginVars['afterpath']);
@@ -81,7 +81,7 @@ if($pluginVars['pluginget']['load'])
     $result=$mysqli->query($sql);
     $row=$result->fetch_assoc();
     $username=$row['username']; 
-    $maxRank=explode(',',$_SESSION['permissions'][$config->pageid]);
+    $maxRank=explode(',',$_SESSION['permissions'][$pageId]);
     rsort($maxRank);
     $maxRank=$maxRank[0];
     $sql2="SELECT id, name, displayname, description, rank FROM `".$config->dbprefix."usergroups` WHERE active='Yes' AND rank<=".$maxRank." ORDER BY id ASC";
@@ -182,7 +182,7 @@ if($pluginVars['pluginget']['load'])
   
 }else if($_POST['step']=='3'){
   if(!empty($_POST['selectedid'])){
-    $maxRank=max(explode(',',$_SESSION['permissions'][$config->pageid]));
+    $maxRank=max(explode(',',$_SESSION['permissions'][$pageId]));
     $id=trim($_POST['selectedid'], $_POST['selectedid'][0]);
     if($id=='new')
       $id=$_POST['gid'];
@@ -282,13 +282,12 @@ if($pluginVars['pluginget']['load'])
     $lang->noselectedpages;
   }
 }else{
-  $maxRank=max(explode(',',$_SESSION['permissions'][$config->pageid]));
+  $maxRank=max(explode(',',$_SESSION['permissions'][$pageId]));
   $sql="SELECT id, name, displayname, description, rank FROM `".$config->dbprefix."usergroups` WHERE active='Yes' AND rank<=".$maxRank." ORDER BY id ASC";
   $result=$mysqli->query($sql);
   $return.='<form method="post"><table>
     <tr class="tbl-head"><td>'.$lang->select.'</td><td>'.$lang->groupid.'</td><td>'.$lang->groupname.'</td><td>'.$lang->groupdisplayname.'</td><td>'.$lang->description.'</td><td>'.$lang->grouprank.'</td></tr>
   ';
-  
   while($row=$result->fetch_assoc())
   {
     $return.='<tr><td><input type="radio" name="selectedid" value="g'.$row['id'].'"></td><td>'.$row['id'].'</td><td>'.$row['name'].'</td><td>'.$row['displayname'].'</td><td>'.$row['description'].'</td><td>'.$row['rank'].'</td></tr>';
@@ -303,10 +302,10 @@ if($pluginVars['pluginget']['load'])
   while($row=$result2->fetch_assoc())
   {
     $rank=$class->getPermissions($mysqli, $row['id'], $row['usergroups']);
-    if(empty($rank[$config->pageid]))
+    if(empty($rank[$pageId]))
       $rank=0;
     else
-      $rank=max(explode(',',$rank[$config->pageid]));
+      $rank=max(explode(',',$rank[$pageId]));
     if($rank<=$maxRank)
       $return.='<tr><td><input type="radio" name="selectedid" value="u'.$row['id'].'"></td><td>'.$row['id'].'</td><td>'.$row['username'].'</td><td>'.$row['usergroups'].'</td></tr>';
   }  

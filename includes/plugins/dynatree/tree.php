@@ -11,7 +11,10 @@ $return='
 <script src="'.$config->jquerysource.'" type="text/javascript"></script>
 <script src="'.$config->jqueryuisource.'" type="text/javascript"></script>
 <link href="'.$config->pluginsfolder.'dynatree/ui.dynatree.css" rel="stylesheet" type="text/css" id="skinSheet">
-<script src="'.$config->pluginsfolder.'dynatree/jquery.dynatree.js" type="text/javascript"></script>';
+<script src="'.$config->pluginsfolder.'dynatree/jquery.dynatree.js" type="text/javascript"></script>
+<link href="'.$config->jquerythemesource.'" rel="stylesheet" type="text/css">
+';
+
 $list=array();
 if(isset($_POST['editNewId'])AND(preg_match('/([0-9]{1,10})/', $_POST['editNewId'])))
 {

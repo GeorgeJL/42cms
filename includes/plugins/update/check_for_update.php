@@ -1,5 +1,5 @@
 <?php
-$cookieLifetime=15; //in seconds - recomended at least 3600
+$cookieLifetime=3600; //in seconds - recomended at least 3600
 if(isset($_COOKIE['update']))
 {
   $return=$_COOKIE['update'];  

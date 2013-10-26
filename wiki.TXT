@@ -5,7 +5,7 @@
      ¦ L==================================================- ¦
      L======================================================-
 
-- if you would like to edit inserted plugin via Page editor, for safety reasons you must use text editor (click "Use text editor")
+- if you would like to edit plugin placeholder via Page editor, for safety reasons you must use text editor (click "Use text editor")
 
 [(menu)]				- menu plugin - shows unordered list(<ul><li>) of all active pages - useful for creating menus and page maps
 [(menu?showpart=members)]		- shows only pages which URL begins with "members/"
@@ -105,12 +105,12 @@
      L======================================================-
        
 - there are currently pre-installed 3 templates
-    template 1      -    default administration interface template
-  	template 2      -    the same but with tree
+    template 1      -    not actual template - inserts just page text - not even doctype or <html> tags just [[body]]
+    template 2      -    not actual template - inserts just default doctype(HTML 5) and placeholders ([[title]], [[h1]] and [[body]])
+    template 3      -    default administration interface template (members area template)
+  	template 4      -    the same but with tree (members area with tree)
   	template 10     -    your default 'public' template
-- there are also another two template numbers to use in Page editor
-             0      -    inserts just default doctype(HTML 5) and placeholders ([[title]], [[h1]] and [[body]])
-            -1      -    inserts just page text - not even doctype or <html> tags just [[body]]
+
 - to create template place your files (html, css, js, images...) into includes/templates/TEMPLATE_NUMBER folder (replace TEMPLATE_NUMBER with desired template number) and add into database table your template id (this is the name of the template folder) and name of template (or short description)
 - you can use in your templates four default placeholders:
     [[title]]  - title of the website (place into <title> tag)

@@ -509,7 +509,7 @@ class ConfigData{
                     array(
                           'name'=>'installedbuild', 
                           'label'=>'Originally installed build of 42cms',
-                          'value'=>'3',
+                          'value'=>'35',
                           'type'=>'text',
                           'description'=>'',
                           'step'=>'5',
@@ -527,7 +527,7 @@ class ConfigData{
                     array(
                           'name'=>'localbuild', 
                           'label'=>'Currently installed build of 42cms',
-                          'value'=>'3',
+                          'value'=>'35',
                           'type'=>'text',
                           'description'=>'',
                           'step'=>'5',

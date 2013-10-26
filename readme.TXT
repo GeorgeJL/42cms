@@ -10,8 +10,9 @@ INSTALLATION:
 
 
 !!!!!!!!!!!!!!!!!  IMPORTANT   !!!!!!!!!!!!!!!!!!!
-
- - delete "install" folder.
+ - - - - - what to do after instalation - - - - -
+ 
+ - delete "install" folder
 
  - visit http://www.[yourweb].com/members/ 
 	Your default login data are:

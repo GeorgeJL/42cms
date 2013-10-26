@@ -102,6 +102,8 @@ if ($result['template']>2)
   $template='[[body]]';
 }
 $template=str_replace('[{template_folder}]', $config->weburl.'includes/templates/'.$result['template'].'/', $template);
+$template=str_replace('[{common_tmplate_files}]', $config->weburl.'includes/templates/common/', $template);
+
 //end of template insertion
 
 //user authentication

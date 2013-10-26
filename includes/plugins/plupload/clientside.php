@@ -9,6 +9,16 @@ $return='<style type="text/css">
 		background:url(../bg.jpg);
 	}*/
 </style>
+<script src="'.$config->jquerysource.'" type="text/javascript"></script>
+<script src="'.$config->jqueryuisource.'" type="text/javascript"></script>
+<link href="'.$config->pluginsfolder.'dynatree/ui.dynatree.css" rel="stylesheet" type="text/css" id="skinSheet">
+<script src="'.$config->pluginsfolder.'dynatree/jquery.dynatree.js" type="text/javascript"></script>
+<link href="'.$config->jquerythemesource.'" rel="stylesheet" type="text/css">
+
+
+
+
+
 <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" />
 <!--<link rel="stylesheet" href="'.$config->weburl.'includes/plugins/plupload/js/jquery.plupload.queue/css/jquery.plupload.queue.css" type="text/css" />-->
 <link rel="stylesheet" href="'.$config->weburl.'includes/plugins/plupload/js/jquery.ui.plupload/css/jquery.ui.plupload.css" type="text/css" />

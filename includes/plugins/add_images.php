@@ -49,7 +49,8 @@ if(isset($_POST['image']))
   
   <script type="text/javascript" src="'.$config->jquerysource.'"></script>
   <script type="text/javascript" src="'.$config->jqueryuisource.'"></script>
-  <link rel="stylesheet" href="'.$config->jqueryuithemesource.'" type="text/css" />
+  <link href="'.$config->jquerythemesource.'" rel="stylesheet" type="text/css">
+
   
   <link rel="stylesheet" href="'.$config->pluginsfolder.'plupload/js/jquery.ui.plupload/css/jquery.ui.plupload.css" type="text/css" />
   

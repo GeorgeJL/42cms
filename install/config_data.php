@@ -500,7 +500,7 @@ class ConfigData{
                     array(
                           'name'=>'installedversion', 
                           'label'=>'Originally installed version of 42cms',
-                          'value'=>'1.1.1',
+                          'value'=>'1.1.2',
                           'type'=>'text',
                           'description'=>'',
                           'step'=>'5',
@@ -509,7 +509,7 @@ class ConfigData{
                     array(
                           'name'=>'installedbuild', 
                           'label'=>'Originally installed build of 42cms',
-                          'value'=>'35',
+                          'value'=>'36',
                           'type'=>'text',
                           'description'=>'',
                           'step'=>'5',
@@ -518,7 +518,7 @@ class ConfigData{
                     array(
                           'name'=>'localversion', 
                           'label'=>'Currently installed version of 42cms',
-                          'value'=>'1.1.1',
+                          'value'=>'1.1.2',
                           'type'=>'text',
                           'description'=>'',
                           'step'=>'5',
@@ -527,7 +527,7 @@ class ConfigData{
                     array(
                           'name'=>'localbuild', 
                           'label'=>'Currently installed build of 42cms',
-                          'value'=>'35',
+                          'value'=>'36',
                           'type'=>'text',
                           'description'=>'',
                           'step'=>'5',

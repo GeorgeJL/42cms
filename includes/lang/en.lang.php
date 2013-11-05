@@ -79,6 +79,13 @@ class Lang
   public $both='all users (recommended)';
   public $non='do not show in menu';
   public $loading='Loading';
+  public $fullsizeimage='Fullsize';
+  public $thimage='Thumbnail';
+  public $tinyimage='Tiny thumbnail';
+  public $fileuploaderhelp='Notes:';
+  public $fullsizeimagehelp='Image will be displayed in its actual size.';
+  public $thimagehelp='Image will be displayed in thumbnail size and linking to full-size image.';
+  public $tinyimagehelp='Image will be displayed in small thumbnail size and linking to full-size image.'; 
   
   /*  members/invitations.php  */
   public $nopermtoassign='No user permissions to assign';
@@ -152,7 +159,7 @@ class Lang
   
   /* update/check_for_update */
   public $pleaseupdate='New version available'; 
-  public $cryticalupdate='Crytical update!!!';
+  public $criticalupdate='Critical update!!!';
   public $importantupdate='Important update!';
   public $optionalupdate='Optional update.';
   public $cryticalupdatetitle='Please update ASAP!!!';

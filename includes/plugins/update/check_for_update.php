@@ -13,7 +13,7 @@ if(isset($_COOKIE['update']))
     switch($latestVersion['updatePriority'])
     {
       case 3:
-        $return.=' - <a href="'.$config->updatepageurl.'" class="newversion crytical" title="'.$lang->cryticalupdatetitle.'">'.$lang->pleaseupdate.' ('.$latestVersion['version'].' - '.$lang->cryticalupdate.')</a>';
+        $return.=' - <a href="'.$config->updatepageurl.'" class="newversion crytical" title="'.$lang->cryticalupdatetitle.'">'.$lang->pleaseupdate.' ('.$latestVersion['version'].' - '.$lang->criticalupdate.')</a>';
         break;
       case 2:
         $return.=' - <a href="'.$config->updatepageurl.'" class="newversion important" title="'.$lang->importantupdatetitle.'">'.$lang->pleaseupdate.' ('.$latestVersion['version'].' - '.$lang->importantupdate.')</a>';

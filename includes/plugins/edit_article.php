@@ -189,6 +189,12 @@ if( (isset($pluginVars['afterpath'])AND(preg_match('/^[0-9]{1,5}$/', $pluginVars
     <fieldset>
     <div id="uploaderwrapper">
       <div id="uploadedimages" ></div>
+      <div id="uploadedimageshelp">
+        <b><u>'.$lang->fileuploaderhelp.'</u></b><br><br>
+        <b>'.$lang->fullsizeimage.'</b> - '.$lang->fullsizeimagehelp.'<br>
+        <b>'.$lang->thimage.'</b> - '.$lang->thimagehelp.'<br>
+        <b>'.$lang->tinyimage.'</b> - '.$lang->tinyimagehelp.'<br>
+      </div>
       <div id="uploadedfiles" ></div>
       <button type="button" id="toogleuploader" >'.$lang->pluploadtoogle.'</button>
       <div id="overuploader">
@@ -280,6 +286,8 @@ $(function() {
 
   $( "#toogleuploader" ).click(function() {
       $( "#overuploader" ).toggle( "slide", {"direction" : "up"} );
+      $( "#uploadedimageshelp" ).toggle( "slide", {"direction" : "up"} );
+                    
   });
   
   $( "#toogleuploaderlog" ).click(function() {
@@ -386,7 +394,7 @@ $(function() {
             case "tiff":
             case "gif":
               var newimage = new Image();
-              newimage.src = "'.$config->imagesfolder.'"+imageName; 
+              newimage.src = "'.$config->pageimagesfolder.'"+imageName; 
               newimage.onload = function()
               {
                 var width = this.naturalWidth;
@@ -397,12 +405,42 @@ $(function() {
                 }else{
                   var imgclass="imagebutton portrait";
                 }
-                var data = "'.$config->imagesfolder.'"+imageName;                 /*document.getElementById(\'imagelink\').value*/
+                var data = "'.$config->pageimagesfolder.'"+imageName;                 /*document.getElementById(\'imagelink\').value*/
+                var fullsize = "'.$config->pageimagesfolder.'"+imageName;
                 //alert(data);
                 data2= "<img src=\'"+data+"\'>";
                 data = "<img src=\'"+data+"\' width=\'"+width+"\' height=\'"+height+"\'>";
-                data = "<div class=\"buttonwrapper\"><div class=\"imagesize\">"+width+" x "+height+"</div><button  type=\"button\" class=\""+imgclass+"\" onclick=\"tinyMCE.get(\'text\').execCommand(\'mceInsertContent\',false, $(this).attr(\'data\')   );\" data=\""+data+"\">"+data2+"</button></div>";
+                data = "<div class=\"buttonwrapper\"><div class=\"imagesize\"> "+width+"px x "+height+"px - '.$lang->fullsizeimage.' </div><button  type=\"button\" class=\""+imgclass+"\" onclick=\"tinyMCE.get(\'text\').execCommand(\'mceInsertContent\',false, $(this).attr(\'data\')   );\" data=\""+data+"\">"+data2+"</button></div>";
                 $(\'#uploadedimages\').append(data);
+                
+                
+                var newimage2 = new Image();
+                newimage2.src = "'.$config->pageimagesfolder.'th/"+imageName; 
+                newimage2.onload = function()
+                {
+                  var data4 = "'.$config->pageimagesfolder.'th/"+imageName;                 /*document.getElementById(\'imagelink\').value*/
+                  var data5= "<img src=\'"+data4+"\'>";
+                  var width2 = this.naturalWidth;
+                  var height2 = this.naturalHeight;
+                  var data3 = "<a href=\'"+fullsize+"\' rel=\'lightbox['.$id.']\'><img src=\'"+data4+"\' width=\'"+width2+"\' height=\'"+height2+"\' align=\'left\'></a>";
+                  resultdata2 = "<div class=\"buttonwrapper\"><div class=\"imagesize\"> "+width2+"px x "+height2+"px - '.$lang->thimage.' </div><button  type=\"button\" class=\""+imgclass+"\" onclick=\"tinyMCE.get(\'text\').execCommand(\'mceInsertContent\',false, $(this).attr(\'data\')   );\" data=\""+data3+"\">"+data2+"</button></div>";
+                  
+                  $(\'#uploadedimages\').append(resultdata2);
+                }
+                
+                var newimage3 = new Image();
+                newimage3.src = "'.$config->pageimagesfolder.'tiny/"+imageName; 
+                newimage3.onload = function()
+                {
+                  var data7 = "'.$config->pageimagesfolder.'tiny/"+imageName;                 /*document.getElementById(\'imagelink\').value*/
+                  var data5= "<img src=\'"+data7+"\'>";
+                  var width3 = this.naturalWidth;
+                  var height3 = this.naturalHeight;
+                  var data6 = "<a href=\'"+fullsize+"\' rel=\'lightbox['.$id.']\'><img src=\'"+data7+"\' width=\'"+width3+"\' height=\'"+height3+"\' align=\'left\'></a>";
+                  resultdata3 = "<div class=\"buttonwrapper\"><div class=\"imagesize\"> "+width3+"px x "+height3+"px - '.$lang->tinyimage.' </div><button  type=\"button\" class=\""+imgclass+"\" onclick=\"tinyMCE.get(\'text\').execCommand(\'mceInsertContent\',false, $(this).attr(\'data\')   );\" data=\""+data6+"\">"+data2+"</button></div>";
+                  
+                  $(\'#uploadedimages\').append(resultdata3);
+                }
               }
               break;
             

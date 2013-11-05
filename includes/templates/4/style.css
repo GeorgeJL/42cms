@@ -42,6 +42,7 @@ label{display:inline-block;margin:10px 0px;width:300px;text-align:right;padding-
 #uploader{z-index:99999;text-align:left;border:1px solid #5f0}
 #uploaderwrapper{text-align:center;width:100%;padding:0}
 #uploadedimages{position:relative;width:100%;padding:0px;margin:5px 0px;text-align:left;background:#080808;color:black}
+#uploadedimageshelp{padding: 10px 15px; color: #ccc; font-size: 0.9em; display: none; background-color: black; text-align: left}
 #uploadedfiles{position:relative;width:100%;padding:0px;margin:5px 0px;text-align:left;background:#080808;color:black}
 .buttonwrapper{position:relative;width:200px;height:200px;border:0px solid black;display:inline-block;vertical-align:top;margin:10px 10px 10px 10px;padding:0px}
 .imagebutton{position:absolute;border:0px}

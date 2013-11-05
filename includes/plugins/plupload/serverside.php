@@ -66,12 +66,26 @@ if(isset($pluginVars['pluginget']['caller']))
 {
   switch ($pluginVars['pluginget']['caller']){
     case 'edit_article':
+      
+      $pos=strlen($config->weburl);
       if(($fileName_b=='.jpg')OR($fileName_b=='.jpeg')OR($fileName_b=='.png')OR($fileName_b=='.bmp')OR($fileName_b=='.tiff')OR($fileName_b=='.giff'))
       {
-        $targetDir='images';
+        $targetDir=substr($config->pageimagesfolder,$pos);
       }else{
-        $targetDir='files';
+        $targetDir=substr($config->filesfolder,$pos);
       }
+      $thumbnail=true;
+      $maxWidth=$config->pagethumbwidth;
+      $maxHeight=$config->pagethumbheight;
+      $quality=90;
+      $thumbPath=$targetDir.'/th';
+      
+      $tinyThumb=true;
+      $tinyMaxWidth=$config->pagetinywidth;
+      $tinyMaxHeight=$config->pagetinyheight;
+      $quality=91;
+      $tinyPath=$targetDir.'/tiny';
+      
       break;
     case 'add_images':
       $targetDir='gallery/'.$_GET['gid'];

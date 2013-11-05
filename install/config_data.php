@@ -84,9 +84,20 @@ class ConfigData{
                           'advanced'=>true
                          ),
                     array(
-                          'name'=>'imagesfolder', 
-                          'label'=>'Folder where will be stored images',
+                          'name'=>'systemimagesfolder', 
+                          'label'=>'Folder where will be stored system images',
                           'value'=>'images',
+                          'type'=>'text',
+                          'prefix'=>'--weburl--',
+                          'suffix'=>'/',
+                          'description'=>'',
+                          'step'=>'3',
+                          'advanced'=>true
+                         ),
+                    array(
+                          'name'=>'pageimagesfolder', 
+                          'label'=>'Folder where will be stored page images (e.g.: uploaded using page editor)',
+                          'value'=>'data/images',
                           'type'=>'text',
                           'prefix'=>'--weburl--',
                           'suffix'=>'/',
@@ -97,7 +108,7 @@ class ConfigData{
                     array(
                           'name'=>'filesfolder', 
                           'label'=>'Folder where will be stored other files (except images)',
-                          'value'=>'files',
+                          'value'=>'data/files',
                           'type'=>'text',
                           'prefix'=>'--weburl--',
                           'suffix'=>'/',
@@ -300,7 +311,7 @@ class ConfigData{
                     array(
                           'name'=>'dbcollate', 
                           'label'=>'Database collation',
-                          'value'=>'utf_unicode_ci',
+                          'value'=>'utf8_unicode_ci',
                           'type'=>'text',
                           'autoconfig'=>1,
                           'description'=>'',
@@ -498,6 +509,46 @@ class ConfigData{
                           'advanced'=>false
                          ),
                     array(
+                          'name'=>'pagethumbwidth', 
+                          'label'=>'Page thumbnail width (in page editor)',
+                          'value'=>'600',
+                          'type'=>'number',
+                          'min'=>'1',
+                          'min'=>'10000',
+                          'step'=>'5',
+                          'advanced'=>true
+                         ),
+                    array(
+                          'name'=>'pagethumbheight', 
+                          'label'=>'Page thumbnail height (in page editor)',
+                          'value'=>'3000',
+                          'type'=>'number',
+                          'min'=>'1',
+                          'min'=>'10000',
+                          'step'=>'5',
+                          'advanced'=>true
+                         ),
+                    array(
+                          'name'=>'pagetinywidth', 
+                          'label'=>'Page tiny thumbnail width (in page editor)',
+                          'value'=>'300',
+                          'type'=>'number',
+                          'min'=>'1',
+                          'min'=>'10000',
+                          'step'=>'5',
+                          'advanced'=>true
+                         ),
+                    array(
+                          'name'=>'pagetinyheight', 
+                          'label'=>'Page tiny thumbnail height (in page editor)',
+                          'value'=>'3000',
+                          'type'=>'number',
+                          'min'=>'1',
+                          'min'=>'10000',
+                          'step'=>'5',
+                          'advanced'=>true
+                         ),
+                    array(
                           'name'=>'installedversion', 
                           'label'=>'Originally installed version of 42cms',
                           'value'=>'1.1.2',
@@ -509,7 +560,7 @@ class ConfigData{
                     array(
                           'name'=>'installedbuild', 
                           'label'=>'Originally installed build of 42cms',
-                          'value'=>'36',
+                          'value'=>'37',
                           'type'=>'text',
                           'description'=>'',
                           'step'=>'5',
@@ -527,13 +578,12 @@ class ConfigData{
                     array(
                           'name'=>'localbuild', 
                           'label'=>'Currently installed build of 42cms',
-                          'value'=>'36',
+                          'value'=>'37',
                           'type'=>'text',
                           'description'=>'',
                           'step'=>'5',
                           'advanced'=>true
-                         )
-                         
+                         )    
                     /*
                     array(
                           'name'=>'', 

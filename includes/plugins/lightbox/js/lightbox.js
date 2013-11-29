@@ -166,7 +166,7 @@ lightbox = new Lightbox options
       }
       $window = $(window);
       /*edited 42cms originaly / 10*/
-      top = $window.scrollTop() + $window.height() / 30;
+      top = $window.scrollTop() + $window.height() / 50;
       /*end of edited 42cms*/
       left = $window.scrollLeft();
       $lightbox = $('#lightbox');
@@ -206,7 +206,7 @@ lightbox = new Lightbox options
     Lightbox.prototype.sizeContainer = function(imageWidth, imageHeight) {
       /*edited 42cms */
       
-      var maxWidth = 0.9, maxHeight = 0.8;
+      var maxWidth = 0.9, maxHeight = 0.85;
       if (imageWidth > $(window).width() * maxWidth || imageHeight > $(window).height() * maxHeight) {
         if (imageWidth / imageHeight > $(window).width() / $(window).height()) {
           imageHeight = (imageHeight / imageWidth) * $(window).width() * maxWidth;

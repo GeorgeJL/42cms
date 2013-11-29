@@ -49,7 +49,7 @@ while($row=$result->fetch_array())
   }else{
     $author='';
   }
-  @$return.='<span class="overimage"><a href="'.$config->galleryfolder.$row['galleryid'].'/'.$row['file'].'" rel="lightbox[roadtrip]" title="'.$row['title'].'" lightdata-desc="<b>'.$row['title'].'</b><br />'.$description.'Added: '.$row['addeddate'].$author.'<br/>"><img src="'.$config->galleryfolder.'/'.$row['galleryid'].'/th/'.$row['file'].'"></a></span>';
+  @$return.='<span class="overimage"><a href="'.$config->galleryfolder.$row['galleryid'].'/'.$row['file'].'" rel="lightbox[roadtrip]" title="'.$row['title'].'" lightdata-desc="<b>'.$row['title'].'</b><br />'.$description.$lang->added.': '.$row['addeddate'].$author.'<br/>"><img src="'.$config->galleryfolder.'/'.$row['galleryid'].'/th/'.$row['file'].'"></a></span>';
 }
 if($i==1)
 {

@@ -549,6 +549,26 @@ class ConfigData{
                           'advanced'=>true
                          ),
                     array(
+                          'name'=>'gallerythumbwidth', 
+                          'label'=>'Gellery thumbnail width',
+                          'value'=>'240',
+                          'type'=>'number',
+                          'min'=>'1',
+                          'min'=>'10000',
+                          'step'=>'5',
+                          'advanced'=>true
+                         ),
+                    array(
+                          'name'=>'gallerythumbheight', 
+                          'label'=>'Gallery thumbnail height',
+                          'value'=>'240',
+                          'type'=>'number',
+                          'min'=>'1',
+                          'min'=>'10000',
+                          'step'=>'5',
+                          'advanced'=>true
+                         ),
+                    array(
                           'name'=>'installedversion', 
                           'label'=>'Originally installed version of 42cms',
                           'value'=>'1.1.2',
@@ -569,7 +589,7 @@ class ConfigData{
                     array(
                           'name'=>'localversion', 
                           'label'=>'Currently installed version of 42cms',
-                          'value'=>'1.1.2',
+                          'value'=>'1.1.2.x',
                           'type'=>'text',
                           'description'=>'',
                           'step'=>'5',
@@ -578,7 +598,7 @@ class ConfigData{
                     array(
                           'name'=>'localbuild', 
                           'label'=>'Currently installed build of 42cms',
-                          'value'=>'37',
+                          'value'=>'38',
                           'type'=>'text',
                           'description'=>'',
                           'step'=>'5',

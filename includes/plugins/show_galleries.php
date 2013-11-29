@@ -24,6 +24,6 @@ while($row2=$result2->fetch_assoc())
 }
 while($row=$result->fetch_assoc())
 {
-  $return.='<div class="overgallerylink"><a href="'.$row['url_part'].'/"><div class="overgallery"><div class="gallerytext"><h3>'.$row['name'].'</h3><p>'.$row['description'].'</p></div><div class="gallerytemplate"><img src="'.$image[$row['id']].'"></div><span style="clear: left"></span></div></a></div>';
+  $return.='<div class="overgallerylink"><a href="'.$row['url_part'].'/"><div class="overgallery"><div class="gallerytext"><h3>'.$row['name'].'</h3><p>'.$row['description'].'</p></div><div class="gallerytemplate"><img src="'.$image[$row['id']].'"></div><div class="clearfix"></div></div></a></div>';
 }
 ?>

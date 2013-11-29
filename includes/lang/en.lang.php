@@ -135,6 +135,7 @@ class Lang
   public $gallerycode='To show this gallery on your page insert following code into your page:';
   public $galleryname='Gallery name:';
   public $gallerydescription='Gallery description';
+  public $added='Added';
   
   /* gallery.php */
   public $author='Author';

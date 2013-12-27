@@ -514,7 +514,7 @@ class ConfigData{
                           'value'=>'600',
                           'type'=>'number',
                           'min'=>'1',
-                          'min'=>'10000',
+                          'max'=>'10000',
                           'step'=>'5',
                           'advanced'=>true
                          ),
@@ -524,7 +524,7 @@ class ConfigData{
                           'value'=>'3000',
                           'type'=>'number',
                           'min'=>'1',
-                          'min'=>'10000',
+                          'max'=>'10000',
                           'step'=>'5',
                           'advanced'=>true
                          ),
@@ -534,7 +534,7 @@ class ConfigData{
                           'value'=>'300',
                           'type'=>'number',
                           'min'=>'1',
-                          'min'=>'10000',
+                          'max'=>'10000',
                           'step'=>'5',
                           'advanced'=>true
                          ),
@@ -544,7 +544,7 @@ class ConfigData{
                           'value'=>'3000',
                           'type'=>'number',
                           'min'=>'1',
-                          'min'=>'10000',
+                          'max'=>'10000',
                           'step'=>'5',
                           'advanced'=>true
                          ),
@@ -554,7 +554,7 @@ class ConfigData{
                           'value'=>'240',
                           'type'=>'number',
                           'min'=>'1',
-                          'min'=>'10000',
+                          'max'=>'10000',
                           'step'=>'5',
                           'advanced'=>true
                          ),
@@ -564,7 +564,7 @@ class ConfigData{
                           'value'=>'240',
                           'type'=>'number',
                           'min'=>'1',
-                          'min'=>'10000',
+                          'max'=>'10000',
                           'step'=>'5',
                           'advanced'=>true
                          ),
@@ -580,7 +580,7 @@ class ConfigData{
                     array(
                           'name'=>'installedbuild', 
                           'label'=>'Originally installed build of 42cms',
-                          'value'=>'37',
+                          'value'=>'39',
                           'type'=>'text',
                           'description'=>'',
                           'step'=>'5',
@@ -598,7 +598,7 @@ class ConfigData{
                     array(
                           'name'=>'localbuild', 
                           'label'=>'Currently installed build of 42cms',
-                          'value'=>'38',
+                          'value'=>'39',
                           'type'=>'text',
                           'description'=>'',
                           'step'=>'5',
